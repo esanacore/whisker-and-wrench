@@ -17,3 +17,8 @@ claude
 ```
 
 Claude Code reads `CLAUDE.md` automatically for context.
+
+## License
+
+- **Code** (site scripts, CI, tooling): [MIT](LICENSE).
+- **Build plans and guides** (everything in `plans/`, and the plan pages on the site): [CC BY-NC 4.0](plans/LICENSE). Build them, share them, adapt them for your shelter, just credit Whisker & Wrench and don't sell them.
