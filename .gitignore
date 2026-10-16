@@ -1,0 +1,22 @@
+# Build output (site gets assembled into dist/ by scripts/build-site.sh)
+dist/
+
+# Node / wrangler
+node_modules/
+.wrangler/
+npm-debug.log*
+
+# Secrets and local env
+.env
+.env.*
+.dev.vars
+
+# Editor and OS clutter
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code local settings
+.claude/settings.local.json
