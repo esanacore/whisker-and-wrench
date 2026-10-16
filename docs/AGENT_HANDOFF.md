@@ -17,26 +17,29 @@ Replace the entry below at the end of every push; only the latest handoff is
 kept. `constitution/scripts/check_next_steps.sh` checks the procedure's
 format.
 
-## Handoff Template
+## Latest Handoff
 
-### Session: [Date/Time]
-- **Accomplishments**: <!-- List here -->
-- **Verification Run**: <!-- Tests run and results -->
-- **Known Blockers**: <!-- List here, or "none" -->
-- **Context Hints**: <!-- Files or decisions the next agent should read -->
+### Session: 2026-10-16 (Claude Code, repo and website setup)
+- **Accomplishments**: Created the public repo, MIT + CC BY-NC 4.0 licenses, adopted the engineering constitution (submodule + bootstrap), built the static site in `site/`, added CI (`scripts/test-site.sh` + lychee) and the Cloudflare Pages deploy job, filled requirements, traceability, test plan, operations, architecture and OTS docs.
+- **Verification Run**: `bash scripts/test-site.sh` passes locally (4 pages valid, 0 broken links, all smoke and negative tests pass). All constitution checks pass locally. GitHub Actions `Site` workflow green on push. Pages checked by hand in a browser at desktop and phone width, dark mode, no console errors.
+- **Known Blockers**: the site is not live yet. The deploy job is skipped until Eric finishes the one-time Cloudflare setup below. `wrangler login` timed out once waiting for browser approval.
+- **Context Hints**: `docs/OPERATIONS.md` (Cloudflare setup, rollback, DNS rule), `.github/workflows/site.yml`, `scripts/build-site.sh` (plan guides are copied in at build time, never edit copies).
 
 #### Next Steps
 
-<!-- Replace the example steps below with the real procedure; the example
-is well-formed, so the checker cannot tell it from a real one. Keep the
-"Human action required" line naming every HUMAN step (write "none" when no
-step is HUMAN), and always leave at least one step, marked _(suggestion)_ if
-it is optional. -->
+**Human action required:** steps 1, 2, 3, 5.
 
-**Human action required:** step 1.
-
-1. [ ] **HUMAN** — Review and merge the pull request
-   - **Why a human:** merging is the maintainer's decision.
-   - **Done when:** the pull request shows as merged and CI on the default branch is green.
-2. [ ] **AUTOMATED** — CI runs on the merge commit; watch for a red run.
-3. [ ] **AGENT** _(suggestion)_ — Pick up the highest-priority open item in `TODO.md`.
+1. [ ] **HUMAN** — Sign in to Cloudflare from wrangler and create the Pages project
+   - **Why a human:** it's an OAuth consent in Eric's Cloudflare account.
+   - **Done when:** `npx wrangler@4.146.0 login --scopes account:read user:read pages:write offline_access --use-keyring` succeeds and `npx wrangler@4.146.0 pages project create whisker-and-wrench --production-branch main` reports the project created (an agent can run the second command once login is done).
+2. [ ] **HUMAN** — Create a Cloudflare API token and save it as a GitHub secret
+   - **Why a human:** it's a credential; agents must not see or type it.
+   - **Done when:** a Custom token with Account > Cloudflare Pages > Edit exists and `gh secret list` shows `CLOUDFLARE_API_TOKEN` (set with `gh secret set CLOUDFLARE_API_TOKEN`, pasting the token at the prompt).
+3. [ ] **HUMAN** — Save the Cloudflare account ID as a GitHub variable
+   - **Why a human:** needs the logged-in Cloudflare account; it's not a secret, so an agent can do it after step 1.
+   - **Done when:** `gh variable list` shows `CLOUDFLARE_ACCOUNT_ID` (from `npx wrangler@4.146.0 whoami`).
+4. [ ] **AUTOMATED** — Re-run the `Site` workflow on `main` (`gh workflow run site.yml`, or push any commit); the deploy job publishes to https://whisker-and-wrench.pages.dev.
+5. [ ] **HUMAN** — Attach the custom domain in the Cloudflare dashboard
+   - **Why a human:** UI-only, and it adds a DNS record in Eric's zone.
+   - **Done when:** Workers & Pages > whisker-and-wrench > Custom domains shows `whiskerandwrench.com` as Active and the site loads over HTTPS.
+6. [ ] **AGENT** _(suggestion)_ — Tick "The site is live" in `docs/PRODUCT_REQUIREMENTS.md`, update CLAUDE.md status, and pick up the next item in `TODO.md`.

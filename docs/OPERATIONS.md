@@ -13,7 +13,7 @@ How the website gets built, deployed, rolled back and kept healthy.
 
 ### One-time Cloudflare setup
 
-1. **Pages project**: `npx wrangler@4.146.0 login`, then `npx wrangler@4.146.0 pages project create whisker-and-wrench --production-branch main`.
+1. **Pages project**: `npx wrangler@4.146.0 login --scopes account:read user:read pages:write offline_access --use-keyring` (asks only for Pages access and keeps the login in the OS keychain), then `npx wrangler@4.146.0 pages project create whisker-and-wrench --production-branch main`.
 2. **API token for GitHub Actions**: Cloudflare dashboard > My Profile > API Tokens > Create Token > Custom token. Permission: **Account > Cloudflare Pages > Edit**, scoped to your account only. Save it as the repo secret: `gh secret set CLOUDFLARE_API_TOKEN` (paste when prompted).
 3. **Account ID**: `npx wrangler@4.146.0 whoami` shows it. Save it as a repo variable: `gh variable set CLOUDFLARE_ACCOUNT_ID --body <id>`.
 4. **Custom domain**: Workers & Pages > `whisker-and-wrench` > Custom domains > Set up a custom domain > `whiskerandwrench.com`. Because the zone is on Cloudflare DNS, Cloudflare adds the one CNAME record it needs for the apex and issues the certificate. Repeat for `www.whiskerandwrench.com` if you want `www` to work too. No other DNS records are touched.
