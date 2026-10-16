@@ -1,5 +1,17 @@
 # Roadmap
 
+## Done
+
+- 2026-10-16: Public repo (esanacore/whisker-and-wrench), MIT for code, CC BY-NC 4.0 for plans, engineering constitution adopted.
+- 2026-10-16: Static site for whiskerandwrench.com (home, plans index, Plan 001 at `/plans/001-shelter-cot/`), CI with HTML validation and link checks, deploy workflow for Cloudflare Pages.
+
+## Website next steps
+
+1. Finish the one-time Cloudflare setup and attach whiskerandwrench.com (see `docs/OPERATIONS.md`).
+2. Decide on `www` and the extra domains (whiskerandwrench.org, whiskerwrench.com) as redirects.
+3. Add a "for shelters" page: how to request a build, sliding scale, fundraising kit.
+4. Turn on Cloudflare Web Analytics (cookie-free) once there's traffic worth measuring.
+
 ## Furniture plan series
 
 | # | Plan | Notes | Status |
@@ -25,4 +37,4 @@ Also: small and large versions of 001 (only B, C and fabric lengths change).
 2. Talk to 3 to 5 shelters about what they'd pay for.
 3. Decide: adopter app first (integrating with existing systems) vs admin/field app first.
 4. Spike integrations: Animal Shelter Manager (open source), Shelterluv, Petfinder.
-5. Write a product brief, then start a repo with the engineering constitution submodule.
+5. Write a product brief. App code can live in this repo (constitution already set up) or a new one with the same submodule.

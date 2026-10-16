@@ -13,8 +13,15 @@ Eric's venture to help animal shelters and animal control with everything we can
 ## Name and domain
 
 - Brand: **Whisker & Wrench**. Repo name: `whisker-and-wrench`.
-- Domains (checked unregistered on 2026-10-16, confirm on Cloudflare Registrar): whiskerandwrench.com (primary), whiskerandwrench.org, whiskerwrench.com (short redirect).
-- Plan: register on Cloudflare, host the site on Cloudflare Pages.
+- Domain: whiskerandwrench.com, registered on Cloudflare with Cloudflare DNS. Possible extras later: whiskerandwrench.org, whiskerwrench.com (short redirect).
+- Site: static, in `site/`, deployed to the Cloudflare Pages project `whisker-and-wrench` by GitHub Actions on pushes to `main`. See `docs/OPERATIONS.md`.
+- GitHub: https://github.com/esanacore/whisker-and-wrench (public).
+- **DNS rule**: never change records in the whiskerandwrench.com zone other than the ones the Pages custom-domain flow creates, without asking Eric first.
+
+## Licenses
+
+- Code: MIT (`LICENSE`).
+- Build plans and guides: CC BY-NC 4.0 (`plans/LICENSE`). Eric chose this on 2026-10-16.
 
 ## Decisions so far
 
@@ -42,18 +49,29 @@ Concise, casual, readable. No em dashes. Plain words over jargon. Guides are pic
 ## Layout
 
 ```
-README.md                     Overview and how to view things
+README.md                     Overview, run and test commands
 ROADMAP.md                    Plan series and software roadmap
+TODO.md / CHANGELOG.md        Living task list and release notes
+site/                         Website source (home, plans index, 404, CSS, _headers)
+plans/LICENSE                 CC BY-NC 4.0 for all plans
+plans/001-shelter-cot/        Plan 001: PVC shelter cot (guide.html + spec)
+scripts/build-site.sh         Builds dist/: copies site/ and each plans/*/guide.html to /plans/<plan>/
+scripts/test-site.sh          Full test suite (HTML validation, link check, smoke checks)
 docs/business-model.md        Pricing, funding, nonprofit vs LLC notes
 docs/research/                Market research (furniture + software)
 docs/product/app-vision.md    Admin + adopter app concept and open questions
-plans/001-shelter-cot/        Plan 001: PVC shelter cot (guide.html + spec)
+docs/OPERATIONS.md            Deploy, rollback, Cloudflare setup, DNS
+constitution/                 Engineering constitution submodule
+.github/workflows/site.yml    Site checks + Cloudflare Pages deploy
 ```
+
+Plan guides live only in `plans/<plan>/guide.html`. Never copy them into `site/`; the build does that. New plans get a row in `site/plans/index.html` and `site/sitemap.xml`.
 
 ## Status
 
 - Plan 001 (PVC Shelter Cot) is a **draft prototype, not yet build-tested**. Dimensions are calculated, not measured. First real task: build one, measure, and update the guide.
-- Software: research only. No code yet.
+- Website: built and in CI (2026-10-16). Live once the one-time Cloudflare steps in `docs/OPERATIONS.md` are done (Pages project, API token secret, account ID variable, custom domain). Check `docs/AGENT_HANDOFF.md` for where that stands.
+- Software: research only. No app code yet.
 
 ## Constitution: required reading
 
