@@ -1,7 +1,11 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>body{margin:0}</style>
-<title>PVC Shelter Cot</title>
+<title>PVC Shelter Cot · Whisker &amp; Wrench</title>
+<meta name="description" content="Plan 001: a raised, washable shelter dog cot built only from big-box plumbing aisle parts. Step-by-step visual guide.">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@600;800&family=JetBrains+Mono:wght@500&display=swap">
@@ -122,11 +126,17 @@ section{display:flex;flex-direction:column;gap:14px}
 .road .q{font-family:var(--f-mono);font-size:.85rem;font-weight:500;color:var(--muted)}
 .status{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;padding:3px 7px;border-radius:4px;border:1.5px solid var(--line);color:var(--muted);white-space:nowrap}
 .status.live{border-color:var(--new);color:var(--ink);background:color-mix(in srgb,var(--new) 18%,transparent)}
+.crumbs{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.crumbs a{color:var(--accent)}
 .foot{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){.stage svg{animation:pop .25s ease-out}@keyframes pop{from{transform:translateY(4px)}to{transform:none}}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
+
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Whisker &amp; Wrench</a> / <a href="/plans/">Plans</a> / Plan 001</nav>
 
 <header class="hero">
   <div class="chips">
@@ -155,7 +165,7 @@ section{display:flex;flex-direction:column;gap:14px}
   <div class="stepper">
     <div class="st-head">
       <div class="st-num" id="sNum">1</div>
-      <div class="st-title"><div class="eyebrow" id="sEye">Step</div><h3 id="sTitle"></h3></div>
+      <div class="st-title"><div class="eyebrow" id="sEye">Step</div><h3 id="sTitle">Cut the pipe</h3></div>
     </div>
     <div class="parts" id="sParts"></div>
     <div class="stage" id="sStage"></div>
@@ -415,3 +425,5 @@ stage.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouch
 show();
 })();
 </script>
+</body>
+</html>
