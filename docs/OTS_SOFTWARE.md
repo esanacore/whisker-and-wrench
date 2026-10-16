@@ -30,7 +30,7 @@ Components declared in a dependency manifest in this repository. `constitution/s
 
 | Component ID | Name | Version | Supplier / Maintainer | Purpose | License | Risk | Verification | Anomaly Review | Update Policy | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| OTS-001 | `<name exactly as declared in the manifest>` | `<version or range>` | `<who maintains it>` | `<role in this system>` | `<SPDX license id>` | `<Low / Medium / High>` | `<how fitness for use was established>` | `<tracker link — last reviewed <YYYY-MM-DD>>` | `<pinned / range / bot-managed>` | Active |
+| OTS-001 | html-validate | 11.16.2 | David Sveningsson and contributors | Dev-only. Validates every built HTML page in `scripts/test-site.sh` and CI. Not shipped to visitors. | MIT | Low | Runs on every push; `scripts/test-site.sh` fails on invalid pages. Mature project with its own test suite. | https://gitlab.com/html-validate/html-validate/-/issues and GitHub advisories — last reviewed 2026-10-16 | Pinned exactly; Dependabot PRs | Active |
 
 ## System-Level OTS
 
@@ -40,7 +40,12 @@ Software the project depends on that is **not** declared in a dependency manifes
 
 | Component ID | Name | Version | Supplier / Maintainer | Purpose | License | Risk | Verification | Anomaly Review | Update Policy | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| OTS-101 | `<e.g. PostgreSQL>` | `<version>` | `<who maintains it>` | `<role in this system>` | `<SPDX license id>` | `<Low / Medium / High>` | `<how fitness for use was established>` | `<tracker link — last reviewed <YYYY-MM-DD>>` | `<managed by / upgrade cadence>` | Active |
+| OTS-101 | Cloudflare Pages | Hosted service | Cloudflare | Hosts and serves the static site, TLS, custom domain. | Proprietary (service) | Medium | Site checked after each deploy; rollback via dashboard. | https://www.cloudflarestatus.com — last reviewed 2026-10-16 | Managed by Cloudflare | Active |
+| OTS-102 | wrangler | 4.146.0 | Cloudflare | Uploads `dist/` to Pages from CI, and local one-time setup. Handles the API token. | MIT OR Apache-2.0 | Medium | Deploy job output; token scoped to Pages:Edit only. | https://github.com/cloudflare/workers-sdk/security — last reviewed 2026-10-16 | Pinned in `site.yml` (`wranglerVersion`); bump by hand | Active |
+| OTS-103 | GitHub Actions: checkout, setup-node, upload/download-artifact, lychee-action, wrangler-action | Pinned by commit SHA in `.github/workflows/` | GitHub, lycheeverse, Cloudflare | CI build, link check and deploy. | MIT / Apache-2.0 | Medium | Every push runs them; SHA pinning blocks tag hijacking. | Dependabot alerts — last reviewed 2026-10-16 | Dependabot (github-actions ecosystem) | Active |
+| OTS-104 | Google Fonts (Atkinson Hyperlegible, Barlow Condensed, JetBrains Mono) | Served by fonts.googleapis.com | Google | Typography on every page. Pages fall back to system fonts if blocked. | OFL-1.1 | Low | Visual check; CSP limits fonts to fonts.gstatic.com. | n/a — last reviewed 2026-10-16 | Unversioned CSS API | Active |
+| OTS-105 | Node.js | 22 (CI) | OpenJS Foundation | Runs html-validate and wrangler. Dev and CI only. | MIT | Low | CI. | https://nodejs.org/en/blog/vulnerability — last reviewed 2026-10-16 | `actions/setup-node` major 22 | Active |
+| OTS-106 | Python | 3.x (system) | Python Software Foundation | Runs `scripts/check_links.py` (stdlib only). | PSF-2.0 | Low | `scripts/test_check_links.sh`. | n/a — last reviewed 2026-10-16 | Whatever the runner ships | Active |
 
 ## Review Cadence
 

@@ -4,39 +4,47 @@ This document provides a high-level overview of how this project is wired and or
 
 ## System Overview
 
-<!-- High-level description of the system's purpose and boundaries -->
+Today Whisker & Wrench is a static website plus build plans. There is no
+server, database or user data. The software products (admin app, adopter app)
+are still in research; see `docs/product/app-vision.md`.
 
 ## Component Diagram
 
-<!--
-  Add a Mermaid diagram (default choice: plain text, diffable, renders
-  natively on GitHub/GitLab) showing major components and how they connect.
-  Only a linked image if Mermaid genuinely cannot express it. Example:
-
-  ```mermaid
-  flowchart LR
-      Client --> API[API Service]
-      API --> DB[(Database)]
-      API --> Queue[Message Queue]
-  ```
--->
+```mermaid
+flowchart LR
+    plans["plans/*/guide.html<br/>(source of each guide)"] --> build
+    site["site/<br/>(home, plans index, CSS)"] --> build
+    build["scripts/build-site.sh"] --> dist["dist/"]
+    dist --> tests["scripts/test-site.sh<br/>html-validate + link check"]
+    tests --> lychee["lychee<br/>(external links, CI)"]
+    lychee --> deploy["wrangler pages deploy<br/>(push to main only)"]
+    deploy --> cf["Cloudflare Pages<br/>whiskerandwrench.com"]
+```
 
 ## Data Flow
 
-<!-- Describe how data moves through the system -->
+1. Authors edit `site/` pages or a plan's `guide.html`.
+2. `scripts/build-site.sh` copies `site/` to `dist/` and each
+   `plans/<plan>/guide.html` to `dist/plans/<plan>/index.html`.
+3. CI tests `dist/`, then uploads it to Cloudflare Pages on pushes to `main`.
+4. Visitors get plain static files. Guides run small inline scripts in the
+   browser (the step-by-step viewer); the only data they store is the current
+   step number in `localStorage`.
 
 ## Key Technologies
 
-- **Frontend**: <!-- e.g., React, Tailwind -->
-- **Backend**: <!-- e.g., FastAPI, PostgreSQL -->
-- **Infrastructure**: <!-- e.g., AWS, Docker -->
+- **Frontend**: hand-written HTML, CSS and vanilla JS. No framework, no bundler.
+- **Backend**: none.
+- **Infrastructure**: Cloudflare Pages (hosting, TLS, custom domain), GitHub Actions (CI and deploy).
 
 ## Repository Structure
 
-- `src/`: Core logic.
-- `tests/`: Automated tests.
-- `docs/`: Supplemental documentation.
-- `constitution/`: Universal engineering rules.
+- `site/`: hand-written website pages, shared CSS, logo, `_headers` (security headers).
+- `plans/`: build plans. Each plan folder has `guide.html` (visual guide) and `README.md` (plain-text spec). Licensed CC BY-NC 4.0.
+- `scripts/`: build and test scripts.
+- `docs/`: research, product notes and constitution docs.
+- `constitution/`: Eric's Engineering Constitution (submodule).
+- `dist/`: build output. Not committed.
 
 ## Layer Boundaries
 
