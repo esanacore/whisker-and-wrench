@@ -1,0 +1,13 @@
+{
+  "name": "whisker-and-wrench",
+  "private": true,
+  "description": "Website and tooling for Whisker & Wrench. No runtime dependencies; dev tools only.",
+  "license": "MIT",
+  "scripts": {
+    "build": "bash scripts/build-site.sh",
+    "test": "bash scripts/test-site.sh"
+  },
+  "devDependencies": {
+    "html-validate": "11.16.2"
+  }
+}

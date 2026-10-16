@@ -8,15 +8,15 @@ It is a living document. Update it whenever the test strategy, targets, or known
 
 Describe the testing approach for this repository using the standard pyramid:
 
-- **Unit tests**: isolated behavior. Location / command: `<add here>`.
-- **Integration tests**: interactions across modules, services, or storage. Location / command: `<add here>`.
-- **End-to-end tests**: critical user workflows. Location / command: `<add here>`.
+- **Unit tests**: the internal link checker (`scripts/check_links.py`) has negative-case tests in `scripts/test_check_links.sh`.
+- **Integration tests**: `scripts/test-site.sh` builds `dist/` from `site/` and `plans/`, validates every page with html-validate, and checks every internal link and `#anchor`.
+- **End-to-end tests**: none automated yet. CI runs lychee against external links. Visual checks are manual (see Coverage Gap Log).
 
 ## How to Run Tests
 
-- Full suite: `<command>`
-- With coverage: `<command>`
-- A single test or subset: `<command>`
+- Full suite: `bash scripts/test-site.sh`
+- With coverage: n/a (static HTML; no line coverage is measured)
+- A single test or subset: `npx html-validate "dist/**/*.html"`, `python scripts/check_links.py dist`, or `bash scripts/test_check_links.sh`
 
 ## Coverage Targets
 
@@ -24,9 +24,9 @@ Targets are a floor, not a ceiling. Changes that drop measured coverage below a 
 
 | Scope | Metric | Floor |
 | --- | --- | --- |
-| Repository default | Line / statement | `<e.g. 80%>` |
-| Critical modules | Branch | `<e.g. 90%>` |
-| Security-sensitive code | Line + branch | `<e.g. 95%>` |
+| Every built page | Passes html-validate | 100% |
+| Internal links and anchors | Resolve | 100% |
+| `scripts/check_links.py` failure modes | Negative test per break type | 100% |
 
 New or modified code should meet the floor on its own, not lean on untouched legacy code.
 
@@ -36,7 +36,7 @@ Coverage is measured on every change (locally and, where possible, in CI). Recor
 
 | Date | Overall coverage | Notes |
 | --- | --- | --- |
-| `<YYYY-MM-DD>` | `<e.g. 0%>` | Baseline |
+| 2026-10-16 | 4 of 4 pages valid, 0 broken links | Baseline: home, plans index, Plan 001, 404 |
 
 A downward trend is a signal to investigate, even when the number stays above the floor.
 
@@ -46,7 +46,8 @@ Track known untested behavior here. A percentage alone hides gaps; this log make
 
 | Gap ID | Area / behavior | Risk | Related requirement | Status | TODO ref |
 | --- | --- | --- | --- | --- | --- |
-| GAP-001 | `<untested behavior>` | `<low / med / high>` | `<FR-xxx or n/a>` | Open | `<link>` |
+| GAP-001 | Visual layout and the Plan 001 stepper JS are only checked by hand in a browser | med | n/a | Open | TODO.md Testing |
+| GAP-002 | Accessibility (contrast, keyboard) is not checked automatically | med | n/a | Open | TODO.md Testing |
 
 ## Requirement Coverage
 

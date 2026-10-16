@@ -43,12 +43,15 @@ jobs:
             exit 1
           fi
 
-      # TODO: add your language/runtime setup + dependency install here.
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "20"
-      # - run: npm ci
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dev tools
+        run: npm ci
 
       - name: Run declared test command
         shell: bash
-        run: bash constitution/scripts/run_declared_tests.sh .
+        run: bash constitution/scripts/run_declared_tests.sh --strict .
