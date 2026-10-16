@@ -29,7 +29,8 @@ Eric's mom is an Animal Control Officer for the Town of Babylon, NY. She is the 
 
 ## Engineering standards
 
-- Apply Eric's engineering constitution to all software work: https://github.com/esanacore/engineering-constitution (add as a `constitution/` submodule when the first code repo is created).
+- This repo follows Eric's Engineering Constitution, installed as the `constitution/` submodule (https://github.com/esanacore/engineering-constitution). Clone with `git clone --recurse-submodules`, or run `git submodule update --init` after a plain clone.
+- Commit messages use Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `ci:`).
 - Solid, beginner-friendly code, simple comments, small focused changes, no unnecessary rewrites.
 - Heavy automated testing, docs written alongside code, quality/security gates.
 - Eric works on Windows (PowerShell), projects live in `C:\Projects`.
@@ -53,3 +54,38 @@ plans/001-shelter-cot/        Plan 001: PVC shelter cot (guide.html + spec)
 
 - Plan 001 (PVC Shelter Cot) is a **draft prototype, not yet build-tested**. Dimensions are calculated, not measured. First real task: build one, measure, and update the guide.
 - Software: research only. No code yet.
+
+## Constitution: required reading
+
+Before making changes, read:
+
+- `constitution/CONSTITUTION.md`
+- `constitution/AI_WORKFLOW.md`
+- `constitution/TESTING.md`
+- `constitution/DOCUMENTATION.md`
+- `constitution/SECURITY.md`
+- `constitution/CODE_STYLE.md`
+- `README.md`
+- `TODO.md` (open `[ ]`/`[~]` items; completed entries are history)
+- `CHANGELOG.md` (the `Unreleased` section and the latest release)
+- `docs/MEMORY.md`
+
+## Constitution: completion checklist
+
+Before completing work:
+
+- Confirm the requested change is implemented.
+- Add or update relevant tests.
+- Evaluate coverage against targets and record any gaps.
+- Update requirements traceability for product-facing repositories.
+- Update the OTS software inventory (`docs/OTS_SOFTWARE.md`) when third-party dependencies changed.
+- Update documentation when needed.
+- Update TODO.md with discovered or completed work.
+- Update CHANGELOG.md for user-facing changes.
+- Consider security impact.
+- Propose new codebase learnings, user preferences, or major decisions to Eric and (upon approval) record them in `docs/MEMORY.md`.
+- Identify useful follow-up work.
+- Clear or archive `docs/SESSION_PLAN.md`.
+- End every push with a Next Steps procedure (`constitution/AI_WORKFLOW.md`, "Next Steps Procedure"): a numbered checklist, each step tagged **HUMAN**, **AGENT**, or **AUTOMATED**, in the PR and `docs/AGENT_HANDOFF.md`.
+- Keep `demo.html` current when user-facing behavior changes.
+- Summarize changes and verification.

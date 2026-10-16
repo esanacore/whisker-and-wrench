@@ -1,5 +1,9 @@
 # Whisker & Wrench
 
+<!-- CONSTITUTION_START -->
+[![Eric's Engineering Constitution](https://img.shields.io/badge/Eric's%20Engineering%20Constitution-Adopted-blue)](https://github.com/esanacore/engineering-constitution)
+<!-- CONSTITUTION_END -->
+
 Tools, plans and software to help animal shelters and animal control. Domain: whiskerandwrench.com (pending registration).
 
 ## What's here

@@ -20,3 +20,14 @@ desktop.ini
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Keys and credentials (never commit these)
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials.json
+.netrc
+terraform.tfstate*
