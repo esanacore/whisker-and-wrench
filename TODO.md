@@ -6,7 +6,6 @@ Keep entries specific, actionable, and current.
 
 ## Features
 
-- [ ] Finish one-time Cloudflare setup and attach whiskerandwrench.com (see `docs/OPERATIONS.md`, needs Eric).
 - [ ] Decide on `www.whiskerandwrench.com` and the extra domains as redirects to the apex.
 - [ ] "For shelters" page: how to request a build, sliding scale, fundraising kit.
 - [ ] Turn the Plan 001 guide renderer into a reusable template so new plans are mostly data (see ROADMAP).

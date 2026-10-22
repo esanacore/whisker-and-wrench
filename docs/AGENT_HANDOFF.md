@@ -27,15 +27,12 @@ format.
 
 #### Next Steps
 
-Done on 2026-10-21: Cloudflare login (Pages-only), Pages project `whisker-and-wrench` created, `CLOUDFLARE_ACCOUNT_ID` repo variable set. Until step 1 is done, a push to `main` will run the deploy job and fail on the missing token.
+Done on 2026-10-22: API token secret set, first deploy succeeded, whiskerandwrench.com attached and serving over HTTPS.
 
-**Human action required:** steps 1, 3.
+**Human action required:** step 1.
 
-1. [ ] **HUMAN** — Create a Cloudflare API token and save it as a GitHub secret
-   - **Why a human:** it's a credential; agents must not see or type it.
-   - **Done when:** a Custom token with Account > Cloudflare Pages > Edit exists and `gh secret list` shows `CLOUDFLARE_API_TOKEN` (set with `gh secret set CLOUDFLARE_API_TOKEN`, pasting the token at the prompt).
-2. [ ] **AUTOMATED** — Re-run the `Site` workflow on `main` (`gh workflow run site.yml`); the deploy job publishes to https://whisker-and-wrench.pages.dev.
-3. [ ] **HUMAN** — Attach the custom domain in the Cloudflare dashboard
-   - **Why a human:** UI-only, and it adds a DNS record in Eric's zone.
-   - **Done when:** Workers & Pages > whisker-and-wrench > Custom domains shows `whiskerandwrench.com` as Active and the site loads over HTTPS.
-4. [ ] **AGENT** _(suggestion)_ — Tick "The site is live" in `docs/PRODUCT_REQUIREMENTS.md`, update CLAUDE.md status, and pick up the next item in `TODO.md`.
+1. [ ] **HUMAN** — Review and merge PR #3 (stepper and accessibility tests)
+   - **Why a human:** merging is Eric's decision.
+   - **Done when:** PR #3 shows as merged and the `Site` workflow on `main` is green.
+2. [ ] **AUTOMATED** — Each push to `main` redeploys the site after the checks pass.
+3. [ ] **AGENT** _(suggestion)_ — Decide on `www` and the extra domains with Eric, then pick up the next item in `TODO.md`.

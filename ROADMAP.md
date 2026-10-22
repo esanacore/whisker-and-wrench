@@ -4,13 +4,13 @@
 
 - 2026-10-16: Public repo (esanacore/whisker-and-wrench), MIT for code, CC BY-NC 4.0 for plans, engineering constitution adopted.
 - 2026-10-16: Static site for whiskerandwrench.com (home, plans index, Plan 001 at `/plans/001-shelter-cot/`), CI with HTML validation and link checks, deploy workflow for Cloudflare Pages.
+- 2026-10-22: Site live at https://whiskerandwrench.com.
 
 ## Website next steps
 
-1. Finish the one-time Cloudflare setup and attach whiskerandwrench.com (see `docs/OPERATIONS.md`).
-2. Decide on `www` and the extra domains (whiskerandwrench.org, whiskerwrench.com) as redirects.
-3. Add a "for shelters" page: how to request a build, sliding scale, fundraising kit.
-4. Turn on Cloudflare Web Analytics (cookie-free) once there's traffic worth measuring.
+1. Decide on `www` and the extra domains (whiskerandwrench.org, whiskerwrench.com) as redirects.
+2. Add a "for shelters" page: how to request a build, sliding scale, fundraising kit.
+3. Turn on Cloudflare Web Analytics (cookie-free) once there's traffic worth measuring.
 
 ## Furniture plan series
 

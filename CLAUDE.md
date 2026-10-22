@@ -70,7 +70,7 @@ Plan guides live only in `plans/<plan>/guide.html`. Never copy them into `site/`
 ## Status
 
 - Plan 001 (PVC Shelter Cot) is a **draft prototype, not yet build-tested**. Dimensions are calculated, not measured. First real task: build one, measure, and update the guide.
-- Website: built and in CI (2026-10-16). Live once the one-time Cloudflare steps in `docs/OPERATIONS.md` are done (Pages project, API token secret, account ID variable, custom domain). Check `docs/AGENT_HANDOFF.md` for where that stands.
+- Website: **live at https://whiskerandwrench.com** since 2026-10-22. Deploys automatically on every push to `main`.
 - Software: research only. No app code yet.
 
 ## Constitution: required reading

@@ -96,7 +96,7 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 Release-level acceptance criteria roll up the per-requirement criteria above. A release is ready when every `MUST` requirement is `Verified` in the traceability matrix.
 
 - [x] All `MUST` requirements have verifying tests and are marked `Verified` in `docs/REQUIREMENTS_TRACEABILITY.md`.
-- [ ] The site is live at https://whiskerandwrench.com.
+- [x] The site is live at https://whiskerandwrench.com.
 
 ## Traceability
 
