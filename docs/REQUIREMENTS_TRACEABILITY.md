@@ -27,6 +27,7 @@ A requirement with no verifying test is a coverage gap. Record it in `docs/TEST_
 | FR-002 | MUST | Plans index links every plan | FR-002-AC-1 | `scripts/test-site.sh` smoke checks (FR-002) | Verified |
 | FR-003 | MUST | Guides served from their source file | FR-003-AC-1 | `scripts/test-site.sh` smoke checks (FR-003) | Verified |
 | FR-004 | MUST | Every page links home | FR-004-AC-1 | `scripts/test-site.sh` smoke checks (FR-004) | Verified |
+| FR-005 | MUST | Guide stepper works in a browser | FR-005-AC-1 | `tests/browser/smoke.spec.mjs` ("Plan 001 stepper walks through every step") | Verified |
 
 ## Non-Functional Requirements
 
@@ -36,13 +37,15 @@ A requirement with no verifying test is a coverage gap. Record it in `docs/TEST_
 | NFR-002 | MUST | Valid HTML, no broken internal links | NFR-002-AC-1, NFR-002-AC-2 | `scripts/test-site.sh` (html-validate, `check_links.py`); `scripts/test_check_links.sh` | Verified |
 | NFR-003 | SHOULD | External links work | NFR-003-AC-1 | `.github/workflows/site.yml` lychee step | Verified |
 | NFR-004 | MUST | Deploy only after checks pass | NFR-004-AC-1 | `.github/workflows/site.yml` (`deploy` needs `check`) | Verified |
+| NFR-005 | MUST | Every page is accessible | NFR-005-AC-1, NFR-005-AC-2 | `tests/browser/a11y.spec.mjs` (axe per page, keyboard stepper) | Verified |
+| NFR-006 | MUST | Every page works on a phone | NFR-006-AC-1 | `tests/browser/smoke.spec.mjs` ("fits a 375px screen" per page) | Verified |
 
 ## Coverage Summary
 
 | Metric | Count |
 | --- | --- |
-| Total requirements | 8 |
-| Verified | 8 |
+| Total requirements | 11 |
+| Verified | 11 |
 | In progress | 0 |
 | Not started | 0 |
 | Requirements without a verifying test (gaps) | 0 |

@@ -15,7 +15,7 @@ flowchart LR
     plans["plans/*/guide.html<br/>(source of each guide)"] --> build
     site["site/<br/>(home, plans index, CSS)"] --> build
     build["scripts/build-site.sh"] --> dist["dist/"]
-    dist --> tests["scripts/test-site.sh<br/>html-validate + link check"]
+    dist --> tests["scripts/test-site.sh<br/>html-validate + link check<br/>Playwright + axe"]
     tests --> lychee["lychee<br/>(external links, CI)"]
     lychee --> deploy["wrangler pages deploy<br/>(push to main only)"]
     deploy --> cf["Cloudflare Pages<br/>whiskerandwrench.com"]
@@ -41,7 +41,8 @@ flowchart LR
 
 - `site/`: hand-written website pages, shared CSS, logo, `_headers` (security headers).
 - `plans/`: build plans. Each plan folder has `guide.html` (visual guide) and `README.md` (plain-text spec). Licensed CC BY-NC 4.0.
-- `scripts/`: build and test scripts.
+- `scripts/`: build and test scripts, plus `serve-dist.mjs` (local server the browser tests use).
+- `tests/browser/`: Playwright tests: Plan 001 stepper, 375px layout, axe accessibility.
 - `docs/`: research, product notes and constitution docs.
 - `constitution/`: Eric's Engineering Constitution (submodule).
 - `dist/`: build output. Not committed.

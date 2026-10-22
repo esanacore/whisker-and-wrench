@@ -32,7 +32,10 @@ You need Git, Node.js 22+, Python 3, and Bash (Git Bash on Windows).
 git clone --recurse-submodules https://github.com/esanacore/whisker-and-wrench.git
 cd whisker-and-wrench
 npm ci
+npx playwright install chromium
 ```
+
+The last line downloads the browser the tests use (once per machine).
 
 ## Run
 
@@ -68,7 +71,7 @@ Same command on every platform (use Git Bash on Windows):
 bash scripts/test-site.sh
 ```
 
-It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, and runs the link checker's own tests. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
+It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, runs the link checker's own tests, then opens the site in headless Chromium (Playwright) to click through the Plan 001 steps, check every page fits a 375px phone screen, and run axe accessibility checks. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
 
 ## Deploy
 
@@ -92,6 +95,8 @@ scripts/
   build-site.sh               Assemble dist/ from site/ and plans/
   test-site.sh                Full test suite
   check_links.py              Internal link checker
+  serve-dist.mjs              Local server for dist/ (browser tests)
+tests/browser/                Playwright stepper, mobile and axe tests
 docs/
   business-model.md           Pricing, funding, nonprofit vs LLC notes
   research/                   Market research (furniture + software)

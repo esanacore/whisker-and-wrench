@@ -24,8 +24,9 @@ Keep entries specific, actionable, and current.
 
 ## Testing
 
-- [ ] GAP-001: no automated visual or stepper-JS test for the Plan 001 guide. Consider a Playwright smoke test that clicks through every step.
-- [ ] GAP-002: no automated accessibility check (contrast, keyboard). Consider pa11y or axe in CI.
+- [x] GAP-001: Playwright smoke test clicks through every Plan 001 step and checks 375px layout on every page (`tests/browser/smoke.spec.mjs`).
+- [x] GAP-002: axe accessibility checks on every page in CI (`tests/browser/a11y.spec.mjs`). Fixed the one issue it found (Plan 001 had no `<main>`).
+- [ ] GAP-003: browser tests are Chromium only and don't catch pixel-level looks. Consider adding WebKit (iPhone Safari) and screenshot comparisons once the design settles.
 
 ## Documentation
 
