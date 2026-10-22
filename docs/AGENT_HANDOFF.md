@@ -19,11 +19,11 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-16 (Claude Code, repo and website setup)
-- **Accomplishments**: Created the public repo, MIT + CC BY-NC 4.0 licenses, adopted the engineering constitution (submodule + bootstrap), built the static site in `site/`, added CI (`scripts/test-site.sh` + lychee) and the Cloudflare Pages deploy job, filled requirements, traceability, test plan, operations, architecture and OTS docs.
-- **Verification Run**: `bash scripts/test-site.sh` passes locally (4 pages valid, 0 broken links, all smoke and negative tests pass). All constitution checks pass locally. GitHub Actions `Site` workflow green on push. Pages checked by hand in a browser at desktop and phone width, dark mode, no console errors.
-- **Known Blockers**: the site is not live yet. The deploy job is skipped until Eric finishes the one-time Cloudflare setup below. `wrangler login` timed out once waiting for browser approval.
-- **Context Hints**: `docs/OPERATIONS.md` (Cloudflare setup, rollback, DNS rule), `.github/workflows/site.yml`, `scripts/build-site.sh` (plan guides are copied in at build time, never edit copies).
+### Session: 2026-10-22 (Claude Code, browser and accessibility tests)
+- **Accomplishments**: Closed GAP-001 and GAP-002. Added Playwright (`@playwright/test` 1.63.0) and axe (`@axe-core/playwright` 4.13.0) as pinned dev deps, a tiny `scripts/serve-dist.mjs` server, and `tests/browser/` (Plan 001 stepper click-through, 375px no-sideways-scroll on every page, axe WCAG A/AA + best-practice on every page, keyboard stepper). Wired into `scripts/test-site.sh`; both `site.yml` and `constitution-tests.yml` now install Chromium. Axe found one real issue: the Plan 001 guide had no `<main>` landmark (fixed). New requirements FR-005, NFR-005, NFR-006 traced. GAP-003 opened (Chromium only, no pixel diffs).
+- **Verification Run**: `bash scripts/test-site.sh` passes locally on Windows Git Bash (10 of 10 browser tests). Checked by hand that axe flags a planted contrast and missing-alt problem and the width check catches a 2000px element.
+- **Known Blockers**: none. whiskerandwrench.com is live (see the note under Next Steps).
+- **Context Hints**: `docs/TEST_PLAN.md` (how to run browser tests, one-time `npx playwright install chromium`), `playwright.config.mjs`, `tests/browser/helpers.mjs` (stubs Google Fonts and collects console errors), `docs/OPERATIONS.md` for Cloudflare.
 
 #### Next Steps
 
@@ -35,4 +35,4 @@ Done on 2026-10-22: API token secret set, first deploy succeeded, whiskerandwren
    - **Why a human:** merging is Eric's decision.
    - **Done when:** PR #3 shows as merged and the `Site` workflow on `main` is green.
 2. [ ] **AUTOMATED** — Each push to `main` redeploys the site after the checks pass.
-3. [ ] **AGENT** _(suggestion)_ — Decide on `www` and the extra domains with Eric, then pick up the next item in `TODO.md`.
+3. [ ] **AGENT** _(suggestion)_ — Decide on `www` and the extra domains with Eric, then pick up the next item in `TODO.md` (GAP-003: WebKit and screenshot comparisons).

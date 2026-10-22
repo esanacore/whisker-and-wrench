@@ -52,6 +52,12 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Acceptance criteria:
   - `FR-004-AC-1`: Every built page contains a link to `/`.
 
+**FR-005** `MUST` Each plan guide's step-by-step viewer works in a browser.
+
+- Level: `MUST`
+- Acceptance criteria:
+  - `FR-005-AC-1`: On `/plans/001-shelter-cot/`, clicking Next walks through every step in order, each showing its title and a drawing; Back goes to the previous step; the last step's button reads "Start over" and returns to step 1; no console errors.
+
 ## Non-Functional Requirements
 
 ### Security
@@ -77,6 +83,21 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Level: `SHOULD`
 - Acceptance criteria:
   - `NFR-003-AC-1`: lychee reports no dead external links in CI.
+
+### Accessibility and layout
+
+**NFR-005** `MUST` Every page is accessible.
+
+- Level: `MUST`
+- Acceptance criteria:
+  - `NFR-005-AC-1`: axe reports no WCAG 2.x A/AA or best-practice violations on any built page.
+  - `NFR-005-AC-2`: The guide stepper works from the keyboard.
+
+**NFR-006** `MUST` Every page works on a phone.
+
+- Level: `MUST`
+- Acceptance criteria:
+  - `NFR-006-AC-1`: At 375px wide, no built page scrolls sideways.
 
 ### Testability
 

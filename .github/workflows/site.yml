@@ -3,7 +3,8 @@ name: Site
 # Builds the website, validates it, checks links, and deploys it to
 # Cloudflare Pages.
 #
-# - Every push and pull request: build, HTML validation, internal link check
+# - Every push and pull request: build, HTML validation, internal link check,
+#   Playwright stepper/mobile tests and axe accessibility checks
 #   (scripts/test-site.sh), then lychee for external links.
 # - Push to main only: deploy dist/ to the Cloudflare Pages project
 #   "whisker-and-wrench", but only after the checks pass. The deploy job is
@@ -39,7 +40,10 @@ jobs:
       - name: Install dev tools
         run: npm ci
 
-      - name: Build, validate HTML, check internal links
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build, validate HTML, check links, browser and a11y tests
         run: bash scripts/test-site.sh
 
       - name: Check external links

@@ -4,9 +4,12 @@
 # 1. Build dist/ from site/ and plans/.
 # 2. Validate every page with html-validate.
 # 3. Check every internal link and #anchor resolves.
-# 4. Prove the link checker catches a broken link (negative test).
+# 4. Requirement smoke checks.
+# 5. Prove the link checker catches a broken link (negative test).
+# 6. Browser tests (Playwright): Plan 001 stepper, 375px layout, axe a11y.
 #
-# Usage: bash scripts/test-site.sh   (run `npm ci` once first)
+# Usage: bash scripts/test-site.sh
+# One-time setup: `npm ci` and `npx playwright install chromium`.
 set -euo pipefail
 
 root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
@@ -61,5 +64,8 @@ fi
 
 echo "== Link checker catches broken links"
 bash scripts/test_check_links.sh
+
+echo "== Browser tests (stepper, mobile layout, accessibility)"
+npx --no-install playwright test
 
 echo "All site tests passed."

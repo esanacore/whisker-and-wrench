@@ -6,6 +6,10 @@ node_modules/
 .wrangler/
 npm-debug.log*
 
+# Playwright output
+test-results/
+playwright-report/
+
 # Secrets and local env
 .env
 .env.*
