@@ -27,19 +27,15 @@ format.
 
 #### Next Steps
 
-**Human action required:** steps 1, 2, 3, 5.
+Done on 2026-10-21: Cloudflare login (Pages-only), Pages project `whisker-and-wrench` created, `CLOUDFLARE_ACCOUNT_ID` repo variable set. Until step 1 is done, a push to `main` will run the deploy job and fail on the missing token.
 
-1. [ ] **HUMAN** — Sign in to Cloudflare from wrangler and create the Pages project
-   - **Why a human:** it's an OAuth consent in Eric's Cloudflare account.
-   - **Done when:** `npx wrangler@4.146.0 login --scopes account:read user:read pages:write offline_access --use-keyring` succeeds and `npx wrangler@4.146.0 pages project create whisker-and-wrench --production-branch main` reports the project created (an agent can run the second command once login is done).
-2. [ ] **HUMAN** — Create a Cloudflare API token and save it as a GitHub secret
+**Human action required:** steps 1, 3.
+
+1. [ ] **HUMAN** — Create a Cloudflare API token and save it as a GitHub secret
    - **Why a human:** it's a credential; agents must not see or type it.
    - **Done when:** a Custom token with Account > Cloudflare Pages > Edit exists and `gh secret list` shows `CLOUDFLARE_API_TOKEN` (set with `gh secret set CLOUDFLARE_API_TOKEN`, pasting the token at the prompt).
-3. [ ] **HUMAN** — Save the Cloudflare account ID as a GitHub variable
-   - **Why a human:** needs the logged-in Cloudflare account; it's not a secret, so an agent can do it after step 1.
-   - **Done when:** `gh variable list` shows `CLOUDFLARE_ACCOUNT_ID` (from `npx wrangler@4.146.0 whoami`).
-4. [ ] **AUTOMATED** — Re-run the `Site` workflow on `main` (`gh workflow run site.yml`, or push any commit); the deploy job publishes to https://whisker-and-wrench.pages.dev.
-5. [ ] **HUMAN** — Attach the custom domain in the Cloudflare dashboard
+2. [ ] **AUTOMATED** — Re-run the `Site` workflow on `main` (`gh workflow run site.yml`); the deploy job publishes to https://whisker-and-wrench.pages.dev.
+3. [ ] **HUMAN** — Attach the custom domain in the Cloudflare dashboard
    - **Why a human:** UI-only, and it adds a DNS record in Eric's zone.
    - **Done when:** Workers & Pages > whisker-and-wrench > Custom domains shows `whiskerandwrench.com` as Active and the site loads over HTTPS.
-6. [ ] **AGENT** _(suggestion)_ — Tick "The site is live" in `docs/PRODUCT_REQUIREMENTS.md`, update CLAUDE.md status, and pick up the next item in `TODO.md`.
+4. [ ] **AGENT** _(suggestion)_ — Tick "The site is live" in `docs/PRODUCT_REQUIREMENTS.md`, update CLAUDE.md status, and pick up the next item in `TODO.md`.
