@@ -18,6 +18,10 @@ How the website gets built, deployed, rolled back and kept healthy.
 3. **Account ID** (done 2026-10-21): `npx wrangler@4.146.0 whoami` shows it. Save it as a repo variable: `gh variable set CLOUDFLARE_ACCOUNT_ID --body <id>`.
 4. **Custom domain**: Workers & Pages > `whisker-and-wrench` > Custom domains > Set up a custom domain > `whiskerandwrench.com`. Because the zone is on Cloudflare DNS, Cloudflare adds the one CNAME record it needs for the apex and issues the certificate. Repeat for `www.whiskerandwrench.com` if you want `www` to work too. No other DNS records are touched.
 
+### Repo settings
+
+- **Automatically delete head branches**: on (2026-10-22). GitHub deletes a PR's branch when it merges. Delete the local copy with `git fetch --prune` and `git branch -d <branch>`.
+
 ### Secrets and config
 
 | Name | Kind | Where | Purpose |
