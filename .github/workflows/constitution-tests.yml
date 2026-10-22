@@ -52,6 +52,9 @@ jobs:
       - name: Install dev tools
         run: npm ci
 
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
       - name: Run declared test command
         shell: bash
         run: bash constitution/scripts/run_declared_tests.sh --strict .
