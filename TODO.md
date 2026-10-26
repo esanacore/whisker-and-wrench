@@ -7,7 +7,7 @@ Keep entries specific, actionable, and current.
 ## Features
 
 - [ ] Decide on `www.whiskerandwrench.com` and the extra domains as redirects to the apex.
-- [ ] "For shelters" page: how to request a build, sliding scale, fundraising kit.
+- [~] "For shelters" page: drafted in PR; needs a real contact method (email or form) before it replaces the GitHub-issues fallback.
 - [ ] Turn the Plan 001 guide renderer into a reusable template so new plans are mostly data (see ROADMAP).
 
 ## Technical Debt
