@@ -19,20 +19,20 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-22 (Claude Code, browser and accessibility tests)
-- **Accomplishments**: Closed GAP-001 and GAP-002. Added Playwright (`@playwright/test` 1.63.0) and axe (`@axe-core/playwright` 4.13.0) as pinned dev deps, a tiny `scripts/serve-dist.mjs` server, and `tests/browser/` (Plan 001 stepper click-through, 375px no-sideways-scroll on every page, axe WCAG A/AA + best-practice on every page, keyboard stepper). Wired into `scripts/test-site.sh`; both `site.yml` and `constitution-tests.yml` now install Chromium. Axe found one real issue: the Plan 001 guide had no `<main>` landmark (fixed). New requirements FR-005, NFR-005, NFR-006 traced. GAP-003 opened (Chromium only, no pixel diffs).
-- **Verification Run**: `bash scripts/test-site.sh` passes locally on Windows Git Bash (10 of 10 browser tests). Checked by hand that axe flags a planted contrast and missing-alt problem and the width check catches a 2000px element.
-- **Known Blockers**: none. whiskerandwrench.com is live (see the note under Next Steps).
-- **Context Hints**: `docs/TEST_PLAN.md` (how to run browser tests, one-time `npx playwright install chromium`), `playwright.config.mjs`, `tests/browser/helpers.mjs` (stubs Google Fonts and collects console errors), `docs/OPERATIONS.md` for Cloudflare.
+### Session: 2026-10-25 (Claude Code, For shelters page)
+- **Accomplishments**: Added `/shelters/` (what we help with, sliding-scale pricing, shelter-run fundraiser model, steps, contact fallback), linked it from every page, added FR-005 and browser test coverage. PR #7.
+- **Verification Run**: `bash scripts/test-site.sh` passes locally (HTML valid, 0 broken links, all smoke checks, 12 of 12 browser tests). Page checked by eye in the browser.
+- **Known Blockers**: no real contact method yet; the page falls back to GitHub issues.
+- **Context Hints**: `docs/business-model.md` is the source for pricing and funding wording. Don't state prices on the site until Eric sets them.
 
 #### Next Steps
 
-Done on 2026-10-22: API token secret set, first deploy succeeded, whiskerandwrench.com attached and serving over HTTPS.
+**Human action required:** steps 1, 2.
 
-**Human action required:** step 1.
-
-1. [ ] **HUMAN** — Review and merge PR #3 (stepper and accessibility tests)
-   - **Why a human:** merging is Eric's decision.
-   - **Done when:** PR #3 shows as merged and the `Site` workflow on `main` is green.
-2. [ ] **AUTOMATED** — Each push to `main` redeploys the site after the checks pass.
-3. [ ] **AGENT** _(suggestion)_ — Decide on `www` and the extra domains with Eric, then pick up the next item in `TODO.md` (GAP-003: WebKit and screenshot comparisons).
+1. [ ] **HUMAN** — Choose the contact method for the For shelters page
+   - **Why a human:** it publishes a way to reach Eric under his name.
+   - **Done when:** Eric has given the agent an email address (or form choice) to use.
+2. [ ] **HUMAN** — Review the copy and merge PR #7
+   - **Why a human:** it's public wording about pricing and offers.
+   - **Done when:** PR #7 is merged and the `Site` workflow on `main` is green.
+3. [ ] **AUTOMATED** — The merge deploys `/shelters/` to whiskerandwrench.com.
