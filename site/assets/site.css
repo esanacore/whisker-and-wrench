@@ -1,47 +1,69 @@
-/* Whisker & Wrench site styles.
-   Colors, fonts and spacing match the Plan 001 build guide so the whole site
-   reads like one instruction booklet. */
+/* Whisker & Wrench site styles: "Pegboard & Paws".
+   Warm and cute (the cat, rounded Fredoka labels, soft pinks) meets
+   industrial Americana (pegboard, riveted metal plates, poster type,
+   caution stripes, shipping tags). Dark mode is a charcoal pegboard. */
 
 :root {
-  --bg: #EEF1F4;
-  --panel: #FFFFFF;
-  --ink: #18202B;
-  --muted: #586374;
-  --line: #D3D9E1;
-  --new: #F2B233;
-  --new-ink: #3A2A00;
-  --accent: #5B3E9E;
-  --accent-soft: #ECE6F7;
-  --fabric: #5C8DB3;
-  --f-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  /* Surfaces */
+  --bg: #E2C79D;            /* kraft pegboard */
+  --peg: #B8996A;           /* pegboard holes */
+  --paper: #F7F1E6;         /* cream boards and tags */
+  --plate-top: #EDEBE7;     /* brushed metal plate, top */
+  --plate-bot: #D9D6D0;     /* brushed metal plate, bottom */
+  --plate-edge: #9C978E;
+  --bar: #22303F;           /* header and footer */
+  --bar-ink: #F7F1E6;
+  /* Ink */
+  --ink: #22303F;
+  --muted: #4A5563;
+  --line: #C9B38C;
+  /* Accents */
+  --red: #B53A24;           /* tool red: buttons, accent words */
+  --red-deep: #7E2617;
+  --denim: #2E4A7A;         /* labels and links */
+  --caution: #F2B233;
+  --pink: #F2A0A0;
+  /* Type */
+  --f-poster: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-cute: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
   --f-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 
-/* Dark mode follows the system setting unless a page forces light. */
+/* Dark mode: charcoal pegboard, darker steel. Follows the system setting. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #12161C;
-    --panel: #1A2029;
-    --ink: #E5E9EF;
-    --muted: #9AA5B4;
-    --line: #2B3440;
-    --accent: #B39CEB;
-    --accent-soft: #2A2340;
-    --fabric: #4F7FA5;
+    --bg: #1C2229;
+    --peg: #2C3440;
+    --paper: #262D36;
+    --plate-top: #36404B;
+    --plate-bot: #2B333D;
+    --plate-edge: #12171C;
+    --bar: #12171C;
+    --bar-ink: #F7F1E6;
+    --ink: #EEE8DC;
+    --muted: #B4BCC6;
+    --line: #48525E;
+    --red: #F0806C;
+    --red-deep: #8E3322;
+    --denim: #9DB8E8;
     color-scheme: dark;
   }
 }
-
 :root[data-theme="dark"] {
-  --bg: #12161C;
-  --panel: #1A2029;
-  --ink: #E5E9EF;
-  --muted: #9AA5B4;
-  --line: #2B3440;
-  --accent: #B39CEB;
-  --accent-soft: #2A2340;
-  --fabric: #4F7FA5;
+  --bg: #1C2229;
+  --peg: #2C3440;
+  --paper: #262D36;
+  --plate-top: #36404B;
+  --plate-bot: #2B333D;
+  --plate-edge: #12171C;
+  --bar: #12171C;
+  --bar-ink: #F7F1E6;
+  --ink: #EEE8DC;
+  --muted: #B4BCC6;
+  --line: #48525E;
+  --red: #F0806C;
+  --red-deep: #8E3322;
+  --denim: #9DB8E8;
   color-scheme: dark;
 }
 
@@ -49,32 +71,34 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--peg) 2.5px, transparent 3px);
+  background-size: 26px 26px;
   color: var(--ink);
   font-family: var(--f-body);
   font-size: 16px;
   line-height: 1.55;
 }
 
-a { color: var(--accent); text-underline-offset: 3px; }
+a { color: var(--denim); text-underline-offset: 3px; font-weight: 700; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; border-radius: 3px; }
 
 .skip {
   position: absolute;
   left: -999px;
   top: 8px;
-  background: var(--ink);
-  color: var(--panel);
+  background: var(--bar);
+  color: var(--bar-ink);
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   z-index: 10;
 }
 .skip:focus { left: 16px; }
 
 /* One readable column, 16px gutters on phones. */
 .wrap {
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
@@ -84,161 +108,261 @@ main.wrap {
   padding-block: 28px 56px;
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 40px;
 }
 
-h1, h2, h3 {
-  font-family: var(--f-display);
+h1, h2, h3, p { margin: 0; }
+h1, h2 {
+  font-family: var(--f-poster);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .95;
+  letter-spacing: .01em;
   text-wrap: balance;
-  margin: 0;
-  line-height: 1.05;
 }
-h1 { font-size: clamp(2.6rem, 9vw, 4.2rem); font-weight: 800; text-transform: uppercase; letter-spacing: .005em; }
-h2 { font-size: 1.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: .01em; }
-h3 { font-size: 1.35rem; font-weight: 600; }
-p { margin: 0; }
+h1 { font-size: clamp(2.8rem, 10vw, 4.4rem); }
+h2 { font-size: 2.3rem; }
+h3 { font-family: var(--f-cute); font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
+
+/* Cute accent line under a poster headline, e.g. <h1>Big words<span>cute words</span></h1> */
+h1 span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--f-cute);
+  font-weight: 700;
+  text-transform: none;
+  font-size: .62em;
+  line-height: 1.1;
+  color: var(--red);
+  letter-spacing: 0;
+}
 
 .eyebrow {
-  font-family: var(--f-mono);
-  font-size: .75rem;
+  font-family: var(--f-cute);
+  font-weight: 600;
+  font-size: .8rem;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--denim);
 }
 
-/* Top bar */
-.top {
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
-}
+/* Top bar: the shop sign */
+.top { background: var(--bar); color: var(--bar-ink); border-bottom: 4px solid var(--caution); }
 .top .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding-block: 12px;
+  gap: 8px 16px;
+  padding-block: 10px;
   flex-wrap: wrap;
 }
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--ink);
+  gap: 10px;
+  color: var(--bar-ink);
   text-decoration: none;
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-size: 1.4rem;
+  font-family: var(--f-poster);
+  font-weight: 900;
+  font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: .02em;
 }
-.brand svg { width: 28px; height: 28px; flex: none; }
-.top nav { display: flex; gap: 16px; flex-wrap: wrap; }
-.top nav a {
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 700;
-}
+.brand img { width: 44px; height: 44px; flex: none; }
+.top nav { display: flex; gap: 6px 18px; flex-wrap: wrap; }
+.top nav a { color: var(--bar-ink); text-decoration: none; }
 .top nav a:hover, .top nav a[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: var(--new);
+  text-decoration-color: var(--caution);
   text-decoration-thickness: 3px;
 }
+.top a:focus-visible { outline-color: var(--caution); }
 
-/* Hero */
-.hero { display: flex; flex-direction: column; gap: 16px; }
-.lede { max-width: 60ch; color: var(--muted); font-size: 1.08rem; }
+/* Hero: a cream board hung on the pegboard, with the mascot beside it */
+.hero {
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: 0 6px 0 rgba(34, 48, 63, .25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hero-row { display: grid; grid-template-columns: 1fr 200px; gap: 20px; align-items: center; }
+.hero-row > img { width: 200px; height: 200px; filter: drop-shadow(0 6px 0 rgba(34, 48, 63, .25)); }
+@media (max-width: 620px) {
+  .hero-row { grid-template-columns: 1fr; }
+  .hero-row > img { width: 140px; height: 140px; order: -1; }
+}
+.lede { max-width: 58ch; color: var(--muted); font-size: 1.08rem; }
+
+.btn {
+  align-self: flex-start;
+  display: inline-block;
+  background: var(--red);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-family: var(--f-cute);
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 0 var(--red-deep);
+}
+.btn:hover { text-decoration: none; transform: translateY(1px); box-shadow: 0 3px 0 var(--red-deep); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #22303F; } }
+:root[data-theme="dark"] .btn { color: #22303F; }
+
+/* Section headings sit on a little painted sign */
+section { display: flex; flex-direction: column; gap: 14px; }
+section > h2 {
+  align-self: flex-start;
+  background: var(--bar);
+  color: var(--bar-ink);
+  padding: 6px 14px 4px;
+  border-radius: 6px;
+  box-shadow: 0 4px 0 rgba(34, 48, 63, .25);
+}
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-  font-family: var(--f-mono);
-  font-size: .72rem;
+  font-family: var(--f-cute);
+  font-weight: 600;
+  font-size: .78rem;
   letter-spacing: .04em;
   text-transform: uppercase;
-  border: 1.5px solid var(--line);
-  border-radius: 4px;
-  padding: 4px 8px;
-  color: var(--muted);
-}
-.chip.warn {
-  border-color: var(--new);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 3px 10px;
   color: var(--ink);
-  background: color-mix(in srgb, var(--new) 18%, transparent);
+  background: var(--paper);
 }
+.chip.warn { border-color: var(--caution); background: color-mix(in srgb, var(--caution) 30%, var(--paper)); }
 
-section { display: flex; flex-direction: column; gap: 14px; }
-
-/* Two big "what we do" cards */
-.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+/* Cards: riveted metal plates hung on the pegboard */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
 .card {
-  background: var(--panel);
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  padding: 16px;
+  position: relative;
+  background: linear-gradient(var(--plate-top), var(--plate-bot));
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 4px 0 var(--plate-edge);
+  padding: 22px 18px 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-width: 0;
 }
+.card::before, .card::after,
+.plate::before, .plate::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFFFFF, #8A857D);
+}
+.card::before, .plate::before { left: 9px; }
+.card::after, .plate::after { right: 9px; }
 .card p { color: var(--muted); font-size: .95rem; }
 .card ul { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: .95rem; }
-.card .go { margin-top: auto; font-weight: 700; }
+.card .go { margin-top: auto; }
 
-/* Big callout box, like the parts box in the guide */
+/* Callout: a cream board with a caution-stripe top edge */
 .callout {
-  border: 2px solid var(--ink);
-  border-radius: 10px;
-  padding: 14px 16px;
-  background: color-mix(in srgb, var(--new) 7%, var(--panel));
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 26px 18px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 0 rgba(34, 48, 63, .25);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+.callout::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 10px;
+  background: repeating-linear-gradient(-45deg, var(--caution) 0 12px, #22303F 12px 24px);
 }
 
-/* Numbered list rows (plan series) */
-.list { display: flex; flex-direction: column; border-top: 2px solid var(--ink); }
+/* Lists (plan series, how it works) sit on one long metal plate */
+.list, .plate {
+  position: relative;
+  background: linear-gradient(var(--plate-top), var(--plate-bot));
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 4px 0 var(--plate-edge);
+  padding: 20px 16px 6px;
+  display: flex;
+  flex-direction: column;
+}
 .row {
   display: grid;
-  grid-template-columns: 3.2rem 1fr auto;
+  grid-template-columns: 2.6rem 1fr auto;
   gap: 12px;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 2px dashed var(--line);
 }
-.row .q { font-family: var(--f-mono); font-size: .85rem; font-weight: 500; color: var(--muted); }
-.row .n { min-width: 0; }
-.row .n small { display: block; color: var(--muted); font-size: .85rem; }
-.row .n a { font-weight: 700; }
+.row:last-child { border-bottom: 0; }
+.row .q {
+  font-family: var(--f-poster);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--red);
+}
+.row .n { min-width: 0; font-family: var(--f-cute); font-weight: 600; }
+.row .n small { display: block; color: var(--muted); font-size: .9rem; font-family: var(--f-body); font-weight: 400; }
 .status {
-  font-family: var(--f-mono);
-  font-size: .68rem;
+  font-family: var(--f-cute);
+  font-weight: 600;
+  font-size: .72rem;
   text-transform: uppercase;
   letter-spacing: .05em;
-  padding: 3px 7px;
-  border-radius: 4px;
-  border: 1.5px solid var(--line);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 2px solid var(--muted);
   color: var(--muted);
   white-space: nowrap;
 }
-.status.live {
-  border-color: var(--new);
-  color: var(--ink);
-  background: color-mix(in srgb, var(--new) 18%, transparent);
+.status.live { border-color: var(--caution); color: var(--ink); background: color-mix(in srgb, var(--caution) 35%, transparent); }
+
+/* Notes: shipping tags with a punched hole and a string */
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .notes { grid-template-columns: 1fr; } }
+.note {
+  position: relative;
+  background: var(--paper);
+  border-radius: 6px 22px 22px 6px;
+  padding: 16px 18px 16px 40px;
+  box-shadow: 0 4px 0 rgba(34, 48, 63, .2);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
+.note::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 0 0 3px var(--caution);
+}
+.note p { font-size: .95rem; color: var(--muted); }
 
-/* Short notes in a two-column grid */
-.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 560px) { .notes { grid-template-columns: 1fr; } }
-.note { border-top: 2px solid var(--ink); padding-top: 8px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.note p { font-size: .94rem; color: var(--muted); }
-
-/* Footer */
+/* Footer: the bottom of the shop sign */
+.foot-bar { background: var(--bar); color: var(--bar-ink); border-top: 4px solid var(--caution); margin-top: 8px; }
 .foot {
-  border-top: 1px solid var(--line);
-  padding-block: 16px 32px;
-  font-size: .85rem;
-  color: var(--muted);
+  padding-block: 18px 32px;
+  font-size: .88rem;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
+.foot a { color: var(--caution); }
