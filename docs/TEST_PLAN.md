@@ -42,7 +42,7 @@ Coverage is measured on every change (locally and, where possible, in CI). Recor
 | --- | --- | --- |
 | 2026-10-16 | 4 of 4 pages valid, 0 broken links | Baseline: home, plans index, Plan 001, 404 |
 | 2026-10-22 | 4 of 4 pages valid, 0 broken links; 11 of 11 guide steps pass; 4 of 4 pages pass axe and 375px | Added Playwright + axe (10 browser tests). Axe found one issue (Plan 001 had no `<main>` landmark), fixed. |
-| 2026-10-26 | 5 of 5 pages valid, 0 broken links; 5 of 5 pages pass axe in light and dark, and 375px | "Pegboard & Paws" redesign. Axe now also runs in dark mode (16 browser tests). |
+| 2026-10-26 | 5 of 5 pages valid, 0 broken links; 5 of 5 pages pass axe in light and dark, and 375px | "Pegboard & Paws" redesign. Axe now also runs in dark mode (17 browser tests). |
 
 A downward trend is a signal to investigate, even when the number stays above the floor.
 
