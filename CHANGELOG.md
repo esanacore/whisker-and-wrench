@@ -18,6 +18,9 @@ This project follows semantic versioning.
 
 ### Changed
 
+- New "Pegboard & Paws" look across the site and the Plan 001 guide: kraft pegboard background, riveted metal-plate cards, poster headlines (Big Shoulders Display) with cute Fredoka accents, caution-stripe callouts, shipping-tag notes, and a dark charcoal-pegboard mode.
+- New mascot logo: a grey cat in front of a wrench on a cream badge. Used as the favicon, header logo and home page art.
+
 ### Fixed
 
 - Plan 001 guide is now valid HTML (explicit head and body, no empty heading).
