@@ -18,6 +18,17 @@ How the website gets built, deployed, rolled back and kept healthy.
 3. **Account ID** (done 2026-10-21): `npx wrangler@4.146.0 whoami` shows it. Save it as a repo variable: `gh variable set CLOUDFLARE_ACCOUNT_ID --body <id>`.
 4. **Custom domain**: Workers & Pages > `whisker-and-wrench` > Custom domains > Set up a custom domain > `whiskerandwrench.com`. Because the zone is on Cloudflare DNS, Cloudflare adds the one CNAME record it needs for the apex and issues the certificate. Repeat for `www.whiskerandwrench.com` if you want `www` to work too. No other DNS records are touched.
 
+### Email (planned)
+
+Decided 2026-10-26: shelters contact **hello@whiskerandwrench.com**, forwarded to Eric's Gmail by Cloudflare Email Routing (free). Not set up yet.
+
+1. Dashboard > whiskerandwrench.com > Email > Email Routing > Get started.
+2. Custom address `hello`, destination Eric's Gmail. Click the verification link Cloudflare emails.
+3. Let it add its records (3 MX + 1 SPF TXT). These are the only extra DNS records approved for email.
+4. Send a test to hello@whiskerandwrench.com, then put the address in `site/shelters/index.html` (`#contact`).
+
+Replies go out from Gmail until a sending service is added.
+
 ### Repo settings
 
 - **Automatically delete head branches**: on (2026-10-22). GitHub deletes a PR's branch when it merges. Delete the local copy with `git fetch --prune` and `git branch -d <branch>`.

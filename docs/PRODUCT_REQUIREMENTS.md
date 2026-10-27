@@ -58,6 +58,13 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Acceptance criteria:
   - `FR-005-AC-1`: On `/plans/001-shelter-cot/`, clicking Next walks through every step in order, each showing its title and a drawing; Back goes to the previous step; the last step's button reads "Start over" and returns to step 1; no console errors.
 
+**FR-005** `MUST` A "For shelters" page explains how to work with Whisker & Wrench: what we help with, pricing, how to fund it, the steps, and how to get in touch.
+
+- Level: `MUST`
+- Acceptance criteria:
+  - `FR-005-AC-1`: `/shelters/` has Pricing, How to pay for it, How it works, and a `#contact` section.
+  - `FR-005-AC-2`: the home page, plans index and 404 page link to `/shelters/`.
+
 ## Non-Functional Requirements
 
 ### Security

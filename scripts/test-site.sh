@@ -52,8 +52,14 @@ for guide in plans/*/guide.html; do
     smoke_fail=1
   fi
 done
-for page in dist/index.html dist/plans/index.html dist/404.html dist/plans/*/index.html; do
+for page in dist/index.html dist/plans/index.html dist/shelters/index.html dist/404.html dist/plans/*/index.html; do
   must_contain "$page" 'href="/"' FR-004
+done
+for heading in "Pricing" "How to pay for it" "How it works" 'id="contact"'; do
+  must_contain dist/shelters/index.html "$heading" FR-005
+done
+for page in dist/index.html dist/plans/index.html dist/404.html; do
+  must_contain "$page" 'href="/shelters/"' FR-005
 done
 must_contain dist/_headers "Content-Security-Policy" NFR-001
 must_contain dist/_headers "X-Content-Type-Options: nosniff" NFR-001

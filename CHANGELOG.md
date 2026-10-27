@@ -8,6 +8,7 @@ This project follows semantic versioning.
 
 ### Added
 
+- "For shelters" page at `/shelters/`: what we help with, sliding-scale pricing, the fund-it-yourself model with a fundraising kit, and the steps to work together. Linked from the nav on every page.
 - Website for whiskerandwrench.com: home page, build plans index, 404 page, shared styles matching the Plan 001 guide, security headers, sitemap.
 - Plan 001 (PVC Shelter Cot) guide served at `/plans/001-shelter-cot/`, with a breadcrumb back to the site.
 - CI: HTML validation, internal and external link checks, requirement smoke checks, and the engineering constitution's checks.
