@@ -13,13 +13,17 @@ function describe(violations) {
     .join("\n");
 }
 
-for (const path of PAGES) {
-  test(`${path} has no axe violations`, async ({ page, errors }) => {
-    await page.goto(path);
-    const { violations } = await new AxeBuilder({ page }).withTags(TAGS).analyze();
-    expect(violations, describe(violations)).toEqual([]);
-    expect(errors).toEqual([]);
-  });
+// Every page has a light and a dark palette, so check contrast in both.
+for (const scheme of ["light", "dark"]) {
+  for (const path of PAGES) {
+    test(`${path} has no axe violations (${scheme})`, async ({ page, errors }) => {
+      await page.emulateMedia({ colorScheme: scheme });
+      await page.goto(path);
+      const { violations } = await new AxeBuilder({ page }).withTags(TAGS).analyze();
+      expect(violations, describe(violations)).toEqual([]);
+      expect(errors).toEqual([]);
+    });
+  }
 }
 
 test("Plan 001 stepper works from the keyboard", async ({ page, errors }) => {

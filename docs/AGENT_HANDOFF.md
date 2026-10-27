@@ -19,23 +19,21 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-25 (Claude Code, For shelters page)
-- **Accomplishments**: Added `/shelters/` (what we help with, sliding-scale pricing, shelter-run fundraiser model, steps, contact fallback), linked it from every page, added FR-005 and browser test coverage. PR #7.
-- **Verification Run**: `bash scripts/test-site.sh` passes locally (HTML valid, 0 broken links, all smoke checks, 12 of 12 browser tests). Page checked by eye in the browser.
-- **Known Blockers**: no real contact method yet; the page falls back to GitHub issues.
-- **Context Hints**: `docs/business-model.md` is the source for pricing and funding wording. Don't state prices on the site until Eric sets them.
+### Session: 2026-10-26 (Claude Code, Pegboard & Paws redesign)
+- **Accomplishments**: Eric picked direction C ("Pegboard & Paws") from three mockups. Rewrote `site/assets/site.css`, made the cat-and-wrench badge the logo (`site/assets/logo.svg`), added a mascot hero on the home page, a navy shop-sign header and footer, and restyled the Plan 001 guide's palette and fonts. Axe now runs in light and dark mode.
+- **Verification Run**: `bash scripts/test-site.sh` passes (HTML valid, 0 broken links, smoke checks, 17 of 17 browser tests including axe in both color schemes). Checked by eye in the browser at desktop and 375px, light and dark.
+- **Known Blockers**: none. Contact email (hello@) is still pending Eric's Cloudflare Email Routing setup (see `docs/OPERATIONS.md`, "Email (planned)").
+- **Context Hints**: design tokens are the CSS variables at the top of `site/assets/site.css`. Keep small text on solid boards (cards, tags, hero), never directly on the pegboard dots.
 
 #### Next Steps
 
-Decided 2026-10-26: contact will be hello@whiskerandwrench.com via Cloudflare Email Routing, set up later (steps in `docs/OPERATIONS.md`, "Email (planned)").
-
 **Human action required:** steps 1, 3.
 
-1. [ ] **HUMAN** — Review the copy and merge PR #7 (contact stays the GitHub fallback for now)
-   - **Why a human:** it's public wording about pricing and offers.
-   - **Done when:** PR #7 is merged and the `Site` workflow on `main` is green.
-2. [ ] **AUTOMATED** — The merge deploys `/shelters/` to whiskerandwrench.com.
+1. [ ] **HUMAN** — Review the redesign and merge the PR
+   - **Why a human:** it's the public look of the brand.
+   - **Done when:** the PR is merged and the `Site` workflow on `main` is green.
+2. [ ] **AUTOMATED** — The merge deploys the new look to whiskerandwrench.com.
 3. [ ] **HUMAN** — Set up Cloudflare Email Routing for hello@whiskerandwrench.com
    - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
    - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
-4. [ ] **AGENT** — Send a test email, swap the address into `/shelters/#contact`, and open a PR.
+4. [ ] **AGENT** _(suggestion)_ — Open Graph share image using the mascot, so links to the site show the cat.

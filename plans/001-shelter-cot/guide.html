@@ -8,37 +8,38 @@
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@600;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Big+Shoulders+Display:wght@800;900&family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: instruction-booklet column, one numbered build step at a time, parts callout box like a LEGO manual */
 :root{
-  --bg:#EEF1F4; --panel:#FFFFFF; --ink:#18202B; --muted:#586374; --line:#D3D9E1;
-  --pipe:#FAFBFC; --pipe-edge:#18202B; --shine:#FFFFFF;
+  --bg:#E2C79D; --peg:#B8996A; --panel:#F7F1E6; --ink:#22303F; --muted:#4A5563; --line:#C9B38C;
+  --pipe:#FAFBFC; --pipe-edge:#22303F; --shine:#FFFFFF;
   --new:#F2B233; --new-ink:#3A2A00;
-  --accent:#5B3E9E; --accent-soft:#ECE6F7;
+  --accent:#2E4A7A; --accent-soft:#E3E9F3;
   --fabric:#5C8DB3; --fabric-line:#3A6A90;
-  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,system-ui,sans-serif;
+  --f-cute:"Fredoka","Trebuchet MS",system-ui,sans-serif;
   --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161C; --panel:#1A2029; --ink:#E5E9EF; --muted:#9AA5B4; --line:#2B3440;
+  --bg:#1C2229; --peg:#2C3440; --panel:#262D36; --ink:#EEE8DC; --muted:#B4BCC6; --line:#48525E;
   --pipe:#D9DFE7; --pipe-edge:#07090C; --shine:#F4F7FA;
   --new:#F2B233; --new-ink:#3A2A00;
-  --accent:#B39CEB; --accent-soft:#2A2340;
+  --accent:#9DB8E8; --accent-soft:#25324A;
   --fabric:#4F7FA5; --fabric-line:#2C5577; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#12161C; --panel:#1A2029; --ink:#E5E9EF; --muted:#9AA5B4; --line:#2B3440;
+  --bg:#1C2229; --peg:#2C3440; --panel:#262D36; --ink:#EEE8DC; --muted:#B4BCC6; --line:#48525E;
   --pipe:#D9DFE7; --pipe-edge:#07090C; --shine:#F4F7FA;
   --new:#F2B233; --new-ink:#3A2A00;
-  --accent:#B39CEB; --accent-soft:#2A2340;
+  --accent:#9DB8E8; --accent-soft:#25324A;
   --fabric:#4F7FA5; --fabric-line:#2C5577; color-scheme:dark}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px;display:flex;flex-direction:column;gap:40px}
+body{background-color:var(--bg);background-image:radial-gradient(circle,var(--peg) 2.5px,transparent 3px);background-size:26px 26px;color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;background:var(--bg);box-shadow:0 0 0 1px var(--line);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px;display:flex;flex-direction:column;gap:40px}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
-h1{font-size:clamp(2.6rem,9vw,4.2rem);font-weight:800;letter-spacing:.005em;text-transform:uppercase}
-h2{font-size:1.9rem;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
-h3{font-size:1.35rem;font-weight:600}
+h1{font-size:clamp(2.6rem,9vw,4.2rem);font-weight:900;letter-spacing:.005em;text-transform:uppercase}
+h2{font-size:2.1rem;font-weight:900;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:1.3rem;font-weight:700;font-family:var(--f-cute)}
 p{margin:0}
 .eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
