@@ -19,21 +19,22 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-26 (Claude Code, Pegboard & Paws redesign)
-- **Accomplishments**: Eric picked direction C ("Pegboard & Paws") from three mockups. Rewrote `site/assets/site.css`, made the cat-and-wrench badge the logo (`site/assets/logo.svg`), added a mascot hero on the home page, a navy shop-sign header and footer, and restyled the Plan 001 guide's palette and fonts. Axe now runs in light and dark mode.
-- **Verification Run**: `bash scripts/test-site.sh` passes (HTML valid, 0 broken links, smoke checks, 17 of 17 browser tests including axe in both color schemes). Checked by eye in the browser at desktop and 375px, light and dark.
-- **Known Blockers**: none. Contact email (hello@) is still pending Eric's Cloudflare Email Routing setup (see `docs/OPERATIONS.md`, "Email (planned)").
-- **Context Hints**: design tokens are the CSS variables at the top of `site/assets/site.css`. Keep small text on solid boards (cards, tags, hero), never directly on the pegboard dots.
+### Session: 2026-10-26 (Claude Code, Pegboard & Paws deploy)
+- **Accomplishments**: Merged PR #9 (merge commit 5497d1a). The `Site` workflow deployed the redesign to whiskerandwrench.com.
+- **Verification Run**: The `Site` run on `main` (40441934367) passed. `/`, `/plans/`, `/shelters/`, `/plans/001-shelter-cot/`, `/assets/site.css` and `/assets/logo.svg` return 200, and an unknown path returns 404. The live HTML has the Big Shoulders font link and the "Happier animals" line, `logo.svg` is the cat mascot, and the CSP header is present. Checked by eye in the browser (dark mode).
+- **Known Blockers**: none. Contact email (hello@) is still waiting on Eric's Cloudflare Email Routing setup (see `docs/OPERATIONS.md`, "Email (planned)").
+- **Context Hints**: Browsers that visited before the redesign may show the old CSS and logo from cache until a hard refresh. Four Dependabot PRs are open.
 
 #### Next Steps
 
-**Human action required:** steps 1, 3.
+**Human action required:** steps 1, 2.
 
-1. [ ] **HUMAN** — Review the redesign and merge the PR
-   - **Why a human:** it's the public look of the brand.
-   - **Done when:** the PR is merged and the `Site` workflow on `main` is green.
-2. [ ] **AUTOMATED** — The merge deploys the new look to whiskerandwrench.com.
-3. [ ] **HUMAN** — Set up Cloudflare Email Routing for hello@whiskerandwrench.com
+1. [ ] **HUMAN**: Look at the live site on a phone, in light and dark mode
+   - **Why a human:** whether the brand looks right is Eric's call.
+   - **Done when:** Eric approves it or lists the changes he wants.
+2. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
    - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
    - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
-4. [ ] **AGENT** _(suggestion)_ — Open Graph share image using the mascot, so links to the site show the cat.
+3. [ ] **AGENT**: Merge the green Dependabot PRs (axe-core, html-validate, playwright, constitution submodule).
+4. [ ] **AGENT** _(suggestion)_: Add an Open Graph share image with the mascot, so links to the site show the cat.
+5. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.
