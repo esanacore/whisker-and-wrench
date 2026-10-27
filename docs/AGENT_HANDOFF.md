@@ -19,22 +19,18 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-26 (Claude Code, Pegboard & Paws deploy)
-- **Accomplishments**: Merged PR #9 (merge commit 5497d1a). The `Site` workflow deployed the redesign to whiskerandwrench.com.
-- **Verification Run**: The `Site` run on `main` (40441934367) passed. `/`, `/plans/`, `/shelters/`, `/plans/001-shelter-cot/`, `/assets/site.css` and `/assets/logo.svg` return 200, and an unknown path returns 404. The live HTML has the Big Shoulders font link and the "Happier animals" line, `logo.svg` is the cat mascot, and the CSP header is present. Checked by eye in the browser (dark mode).
-- **Known Blockers**: none. Contact email (hello@) is still waiting on Eric's Cloudflare Email Routing setup (see `docs/OPERATIONS.md`, "Email (planned)").
-- **Context Hints**: Browsers that visited before the redesign may show the old CSS and logo from cache until a hard refresh. Four Dependabot PRs are open.
+### Session: 2026-10-26 (Claude Code, dependency bumps)
+- **Accomplishments**: Merged Dependabot PR #8 (constitution submodule). Bumped @playwright/test to 1.64.1, @axe-core/playwright to 4.14.0 and html-validate to 11.16.4 in one PR. The `overrides` pin on `playwright-core` moved too. Dependabot's own playwright PR (#6) failed CI because it bumped `@playwright/test` but left the override at 1.63.0, which gave mismatched versions (`createCallIdGenerator is not a function`).
+- **Verification Run**: `bash scripts/test-site.sh` passes locally (17 of 17 browser tests). `npm ls` shows a single playwright-core 1.64.1.
+- **Known Blockers**: none. Contact email (hello@) is still waiting on Eric's Cloudflare Email Routing setup.
+- **Context Hints**: When Dependabot bumps `@playwright/test`, bump the `playwright-core` override in `package.json` to the same version or the browser tests crash. Dependabot PRs #4, #5 and #6 close on their own once this merges.
 
 #### Next Steps
 
-**Human action required:** steps 1, 2.
+**Human action required:** step 1.
 
-1. [ ] **HUMAN**: Look at the live site on a phone, in light and dark mode
-   - **Why a human:** whether the brand looks right is Eric's call.
-   - **Done when:** Eric approves it or lists the changes he wants.
-2. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
+1. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
    - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
    - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
-3. [ ] **AGENT**: Merge the green Dependabot PRs (axe-core, html-validate, playwright, constitution submodule).
-4. [ ] **AGENT** _(suggestion)_: Add an Open Graph share image with the mascot, so links to the site show the cat.
-5. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.
+2. [ ] **AGENT** _(suggestion)_: Add an Open Graph share image with the mascot, so links to the site show the cat.
+3. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.
