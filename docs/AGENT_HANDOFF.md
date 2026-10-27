@@ -27,12 +27,15 @@ format.
 
 #### Next Steps
 
-**Human action required:** steps 1, 2.
+Decided 2026-10-26: contact will be hello@whiskerandwrench.com via Cloudflare Email Routing, set up later (steps in `docs/OPERATIONS.md`, "Email (planned)").
 
-1. [ ] **HUMAN** — Choose the contact method for the For shelters page
-   - **Why a human:** it publishes a way to reach Eric under his name.
-   - **Done when:** Eric has given the agent an email address (or form choice) to use.
-2. [ ] **HUMAN** — Review the copy and merge PR #7
+**Human action required:** steps 1, 3.
+
+1. [ ] **HUMAN** — Review the copy and merge PR #7 (contact stays the GitHub fallback for now)
    - **Why a human:** it's public wording about pricing and offers.
    - **Done when:** PR #7 is merged and the `Site` workflow on `main` is green.
-3. [ ] **AUTOMATED** — The merge deploys `/shelters/` to whiskerandwrench.com.
+2. [ ] **AUTOMATED** — The merge deploys `/shelters/` to whiskerandwrench.com.
+3. [ ] **HUMAN** — Set up Cloudflare Email Routing for hello@whiskerandwrench.com
+   - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
+   - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
+4. [ ] **AGENT** — Send a test email, swap the address into `/shelters/#contact`, and open a PR.
