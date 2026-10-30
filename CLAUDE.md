@@ -54,8 +54,8 @@ ROADMAP.md                    Plan series and software roadmap
 TODO.md / CHANGELOG.md        Living task list and release notes
 site/                         Website source (home, plans index, 404, CSS, _headers)
 plans/LICENSE                 CC BY-NC 4.0 for all plans
-plans/001-shelter-cot/        Plan 001: PVC shelter cot (guide.html + spec)
-scripts/build-site.sh         Builds dist/: copies site/ and each plans/*/guide.html to /plans/<plan>/
+plans/001-shelter-cot/        Plan 001: PVC shelter cot (guide.html, guide.css, guide.js + spec)
+scripts/build-site.sh         Builds dist/: copies site/, demo.html, and each plans/*/guide.* to /plans/<plan>/
 scripts/test-site.sh          Full test suite (HTML validation, link check, smoke checks)
 docs/business-model.md        Pricing, funding, nonprofit vs LLC notes
 docs/research/                Market research (furniture + software)
@@ -65,7 +65,7 @@ constitution/                 Engineering constitution submodule
 .github/workflows/site.yml    Site checks + Cloudflare Pages deploy
 ```
 
-Plan guides live only in `plans/<plan>/guide.html`. Never copy them into `site/`; the build does that. New plans get a row in `site/plans/index.html` and `site/sitemap.xml`.
+Plan guides live only in `plans/<plan>/` (`guide.html`, `guide.css`, `guide.js`). Never copy them into `site/`; the build does that. Keep CSS and JS in files, never inline: the CSP has no `'unsafe-inline'` and the smoke checks fail on inline script or style. New plans get a row in `site/plans/index.html` and `site/sitemap.xml`.
 
 ## Status
 

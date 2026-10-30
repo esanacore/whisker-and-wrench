@@ -23,13 +23,17 @@ flowchart LR
 
 ## Data Flow
 
-1. Authors edit `site/` pages or a plan's `guide.html`.
-2. `scripts/build-site.sh` copies `site/` to `dist/` and each
-   `plans/<plan>/guide.html` to `dist/plans/<plan>/index.html`.
+1. Authors edit `site/` pages, `demo.html`, or a plan's `guide.html`, `guide.css` and `guide.js`.
+2. `scripts/build-site.sh` copies `site/` to `dist/`, `demo.html` to `dist/demo.html`, and each
+   `plans/<plan>/guide.html` to `dist/plans/<plan>/index.html` with its `guide.css` and `guide.js` beside it.
 3. CI tests `dist/`, then uploads it to Cloudflare Pages on pushes to `main`.
-4. Visitors get plain static files. Guides run small inline scripts in the
+4. Visitors get plain static files. Guides run a small script in the
    browser (the step-by-step viewer); the only data they store is the current
-   step number in `localStorage`.
+   step number in `localStorage`. All CSS and JS is in files, never inline, so
+   the Content-Security-Policy in `site/_headers` can forbid inline code.
+   The one exception is `demo.html`, which must be a single self-contained file
+   (constitution rule), so the CSP applies only to the rest of the site. The
+   `_headers` rule for `/demo.html` relaxes it.
 
 ## Key Technologies
 
