@@ -78,6 +78,12 @@ Problems we've actually hit, and how to fix them. If yours isn't here, check the
 - **Cause**: wrangler 4.146+ delegates new Pages projects to Workers.
 - **Fix**: add `--force` to create a classic Pages project. Deploys to an existing project aren't affected.
 
+### A page's `_headers` rule doesn't apply on the live site
+
+- **Symptoms**: `curl -I https://whiskerandwrench.com/page.html` returns a 308 to `/page`, and `/page` has the site-wide headers instead of the page's own.
+- **Cause**: Cloudflare Pages redirects `.html` URLs to clean URLs, and `_headers` matches the final path.
+- **Fix**: add the rule for both `/page.html` and `/page`. The `/demo` rule is the example.
+
 ## Environment Reset
 
 If the tools are in a strange state:

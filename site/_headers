@@ -7,7 +7,11 @@
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
 
 # demo.html must be one self-contained file (constitution "Demo Page" rule),
-# so it alone keeps inline CSS and JS. Still no outside hosts.
+# so it alone keeps inline CSS and JS. Still no outside hosts. Cloudflare
+# Pages redirects /demo.html to the clean URL /demo, so both paths need it.
 /demo.html
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+/demo
   ! Content-Security-Policy
   Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
