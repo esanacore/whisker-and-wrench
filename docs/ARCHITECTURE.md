@@ -33,7 +33,7 @@ flowchart LR
    the Content-Security-Policy in `site/_headers` can forbid inline code.
    The one exception is `demo.html`, which must be a single self-contained file
    (constitution rule), so the CSP applies only to the rest of the site. The
-   `_headers` rule for `/demo.html` relaxes it.
+   `_headers` rules for `/demo.html` and `/demo` (Pages' clean URL) relax it.
 
 ## Key Technologies
 

@@ -74,6 +74,12 @@ else
   echo "PASS  NFR-001: no 'unsafe-inline' and no inline script/style on site pages"
 fi
 must_contain dist/demo.html "simplified drawings" FR-007
+# Pages serves demo.html at the clean URL /demo too; both need the relaxed CSP.
+if grep -qx "/demo" dist/_headers; then
+  echo "PASS  FR-007: _headers has a /demo rule"
+else
+  echo "FAIL  FR-007: _headers has no /demo rule (Pages serves demo.html at /demo)"; smoke_fail=1
+fi
 must_contain dist/demo.html 'href="https://whiskerandwrench.com/plans/001-shelter-cot/"' FR-007
 if grep -qE 'src="https?://|href="https?://[^"]*\.(css|js)"|fonts\.googleapis' dist/demo.html; then
   echo "FAIL  FR-007: demo.html loads something from the network"; smoke_fail=1
