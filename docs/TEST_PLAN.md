@@ -43,6 +43,7 @@ Coverage is measured on every change (locally and, where possible, in CI). Recor
 | 2026-10-16 | 4 of 4 pages valid, 0 broken links | Baseline: home, plans index, Plan 001, 404 |
 | 2026-10-22 | 4 of 4 pages valid, 0 broken links; 11 of 11 guide steps pass; 4 of 4 pages pass axe and 375px | Added Playwright + axe (10 browser tests). Axe found one issue (Plan 001 had no `<main>` landmark), fixed. |
 | 2026-10-26 | 5 of 5 pages valid, 0 broken links; 5 of 5 pages pass axe in light and dark, and 375px | "Pegboard & Paws" redesign. Axe now also runs in dark mode (17 browser tests). |
+| 2026-10-30 | 6 of 6 pages valid, 0 broken links; 6 of 6 pages pass axe in light and dark, and 375px | Added `demo.html` to the page list (20 browser tests). Strict CSP: smoke check fails on any inline script or style. |
 
 A downward trend is a signal to investigate, even when the number stays above the floor.
 
@@ -52,7 +53,7 @@ Track known untested behavior here. A percentage alone hides gaps; this log make
 
 | Gap ID | Area / behavior | Risk | Related requirement | Status | TODO ref |
 | --- | --- | --- | --- | --- | --- |
-| GAP-001 | Visual layout and the Plan 001 stepper JS are only checked by hand in a browser | med | FR-005, NFR-006 | Closed 2026-10-22 (`tests/browser/smoke.spec.mjs`) | TODO.md Testing |
+| GAP-001 | Visual layout and the Plan 001 stepper JS are only checked by hand in a browser | med | FR-006, NFR-006 | Closed 2026-10-22 (`tests/browser/smoke.spec.mjs`) | TODO.md Testing |
 | GAP-002 | Accessibility (contrast, keyboard) is not checked automatically | med | NFR-005 | Closed 2026-10-22 (`tests/browser/a11y.spec.mjs`) | TODO.md Testing |
 | GAP-003 | Browser tests run in Chromium only, and pixel-level looks (spacing, fonts) still need a human eye. Axe can't judge everything (for example whether alt text is meaningful). | low | NFR-005, NFR-006 | Open | TODO.md Testing |
 

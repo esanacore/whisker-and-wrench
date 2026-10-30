@@ -19,18 +19,24 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-26 (Claude Code, dependency bumps)
-- **Accomplishments**: Merged Dependabot PR #8 (constitution submodule). Bumped @playwright/test to 1.64.1, @axe-core/playwright to 4.14.0 and html-validate to 11.16.4 in one PR. The `overrides` pin on `playwright-core` moved too. Dependabot's own playwright PR (#6) failed CI because it bumped `@playwright/test` but left the override at 1.63.0, which gave mismatched versions (`createCallIdGenerator is not a function`).
-- **Verification Run**: `bash scripts/test-site.sh` passes locally (17 of 17 browser tests). `npm ls` shows a single playwright-core 1.64.1.
+### Session: 2026-10-30 (Claude Code, batch: strict CSP, demo page, share image, docs)
+- **Accomplishments**: Merged Dependabot PRs #12 (constitution) and #13 (html-validate 11.17.0). Moved the Plan 001 guide's inline CSS and JS into `guide.css` and `guide.js` and dropped `'unsafe-inline'` from the CSP; a smoke check now fails on any inline script or style. Replaced the placeholder `demo.html` with a real self-contained demo (served at `/demo.html`, in the browser tests). Added an Open Graph image (`site/assets/og.png`) and `og:`/Twitter tags on every page. Wrote real `docs/SETUP.md`, `docs/COMMAND_REFERENCE.md` and `docs/TROUBLESHOOTING.md`. Renumbered the stepper requirement to FR-006 (it collided with FR-005) and added FR-007 for the demo.
+- **Verification Run**: `bash scripts/test-site.sh` passes (6 pages valid, 0 broken links, all smoke checks, 20 of 20 browser tests). Served `dist/` locally with the exact `_headers` CSP and checked in a browser: the guide renders and steps with no console errors, and the demo stepper works under its own rule.
 - **Known Blockers**: none. Contact email (hello@) is still waiting on Eric's Cloudflare Email Routing setup.
-- **Context Hints**: When Dependabot bumps `@playwright/test`, bump the `playwright-core` override in `package.json` to the same version or the browser tests crash. Dependabot PRs #4, #5 and #6 close on their own once this merges.
+- **Context Hints**: `demo.html` is the only page allowed inline code (its own `/demo.html` rule in `site/_headers`). To re-render the share image, screenshot a 1200×630 HTML template with Playwright (the template isn't in the repo; see the TODO entry). `.constitution-bootstrap/` is still there; deleting files needs Eric's OK.
 
 #### Next Steps
 
-**Human action required:** step 1.
+**Human action required:** steps 1, 2, 3.
 
-1. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
+1. [ ] **HUMAN**: Review and merge the PR
+   - **Why a human:** it changes the site's security headers and adds a public page.
+   - **Done when:** the PR is merged and the `Site` run on `main` is green.
+2. [ ] **HUMAN**: After the deploy, paste https://whiskerandwrench.com into a social post preview (or https://www.opengraph.xyz/) and check the card shows the mascot image
+   - **Why a human:** link-preview crawlers can't be run from CI.
+   - **Done when:** the preview shows the cat badge and "Better beds. Better tools."
+3. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
    - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
    - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
-2. [ ] **AGENT** _(suggestion)_: Add an Open Graph share image with the mascot, so links to the site show the cat.
-3. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.
+4. [ ] **AGENT**: Once Eric OKs it, delete `.constitution-bootstrap/`.
+5. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.

@@ -2,7 +2,7 @@
 import { test as base, expect } from "@playwright/test";
 
 // Every page we ship. Each one gets the mobile and accessibility checks.
-export const PAGES = ["/", "/plans/", "/shelters/", "/plans/001-shelter-cot/", "/404.html"];
+export const PAGES = ["/", "/plans/", "/shelters/", "/plans/001-shelter-cot/", "/404.html", "/demo.html"];
 
 // A test page that:
 // - answers any request to another host (Google Fonts) with an empty

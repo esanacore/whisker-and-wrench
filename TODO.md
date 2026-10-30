@@ -13,10 +13,10 @@ Keep entries specific, actionable, and current.
 
 ## Technical Debt
 
-- [ ] `demo.html` is still the constitution placeholder. Either make it a self-contained demo of the guide stepper or point it at the live site per the constitution's Demo Page rule.
+- [x] `demo.html` is a real self-contained demo (simulated 3-step stepper, links to the live guide), served at `/demo.html`.
 - [ ] `.constitution-bootstrap/` holds the bootstrap report and merge templates. Delete once Eric is happy the merges are done.
 - [ ] The first three commits predate the Conventional Commits rule. Leave as is (rewriting pushed history isn't worth it).
-- [ ] CSP allows `'unsafe-inline'` for scripts and styles because the guide uses inline script and style attributes. Move them to files and tighten the CSP.
+- [x] CSP no longer allows `'unsafe-inline'`. Guide CSS/JS live in `guide.css`/`guide.js`; a smoke check blocks new inline code.
 
 ## Refactoring
 
@@ -30,9 +30,9 @@ Keep entries specific, actionable, and current.
 
 ## Documentation
 
-- [ ] Fill in `docs/SETUP.md`, `docs/COMMAND_REFERENCE.md` and `docs/TROUBLESHOOTING.md` from the README (still constitution placeholders).
+- [x] Filled in `docs/SETUP.md`, `docs/COMMAND_REFERENCE.md` and `docs/TROUBLESHOOTING.md`.
 
 ## Nice-to-Have
 
 - [ ] Cloudflare Web Analytics (cookie-free) once there's traffic.
-- [ ] Open Graph image for link previews.
+- [x] Open Graph image for link previews (`site/assets/og.png`, rendered from a small HTML template with Playwright; re-render if the tagline or mascot changes).
