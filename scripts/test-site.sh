@@ -63,6 +63,23 @@ for page in dist/index.html dist/plans/index.html dist/404.html; do
 done
 must_contain dist/_headers "Content-Security-Policy" NFR-001
 must_contain dist/_headers "X-Content-Type-Options: nosniff" NFR-001
+# The site-wide CSP (the first one in _headers, under /*) must forbid inline
+# code, and no page may need it. demo.html has its own relaxed rule because
+# it must be a single self-contained file.
+if grep -m1 "Content-Security-Policy:" dist/_headers | grep -q "unsafe-inline"; then
+  echo "FAIL  NFR-001: the site-wide CSP in _headers still allows 'unsafe-inline'"; smoke_fail=1
+elif grep -rlE '<script>|<style>|<style |[[:space:]]style="' dist --include=*.html | grep -v '^dist/demo.html$' | grep .; then
+  echo "FAIL  NFR-001: pages above have inline script or style, which the CSP blocks"; smoke_fail=1
+else
+  echo "PASS  NFR-001: no 'unsafe-inline' and no inline script/style on site pages"
+fi
+must_contain dist/demo.html "simplified drawings" FR-007
+must_contain dist/demo.html 'href="https://whiskerandwrench.com/plans/001-shelter-cot/"' FR-007
+if grep -qE 'src="https?://|href="https?://[^"]*\.(css|js)"|fonts\.googleapis' dist/demo.html; then
+  echo "FAIL  FR-007: demo.html loads something from the network"; smoke_fail=1
+else
+  echo "PASS  FR-007: demo.html is self-contained"
+fi
 if [ "$smoke_fail" -ne 0 ]; then
   echo "Smoke checks failed."
   exit 1

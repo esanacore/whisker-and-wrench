@@ -1,222 +1,181 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project Demo</title>
-    <!--
-      Demo page scaffold from Eric's Engineering Constitution
-      (DOCUMENTATION.md, "Demo Page").
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whisker &amp; Wrench demo</title>
+<meta name="description" content="A two-minute, self-contained look at what Whisker &amp; Wrench makes: picture-first furniture plans and software for animal shelters.">
+<!--
+  Demo page (constitution DOCUMENTATION.md, "Demo Page").
 
-      Replace every <bracketed> value below with the real project, then delete
-      the placeholder marker in the <body> data attribute. Until that marker is
-      gone, scripts/check_compliance.sh reports this file as an unfinished
-      template, exactly as it does for a copied Markdown template.
+  House rules:
+    - One file. Styles and script stay inline; no build step, no CDN, no
+      network call. It must work opened from file:// in a clone.
+    - Say what is simulated. The stepper below replays three simplified
+      steps of the real guide and says so on the page.
+    - Keep it current. If the plans, pages or stepper change, change this.
+    - Nothing secret. This page is published at whiskerandwrench.com/demo.html.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #E2C79D; --peg: #B8996A; --paper: #F7F1E6; --ink: #22303F; --muted: #4A5563;
+    --red: #B53A24; --denim: #2E4A7A; --caution: #F2B233; --line: #C9B38C;
+    --pipe: #FAFBFC; --new: #F2B233; --fabric: #5C8DB3;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1C2229; --peg: #2C343D; --paper: #262D36; --ink: #EEE8DC; --muted: #B7B0A4; --red: #F0806C; --denim: #9DB8E8; --line: #3A434E; --pipe: #D8DCE1; --btn-ink: #22303F; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.6;
+    background: var(--bg) radial-gradient(circle, var(--peg) 2.2px, transparent 2.6px) 0 0 / 28px 28px;
+  }
+  main { width: min(100% - 32px, 820px); margin: 24px auto 48px; display: grid; gap: 20px; }
+  .board { background: var(--paper); border: 2px solid var(--ink); border-radius: 12px; padding: 20px; }
+  header.board { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  header svg { width: 72px; height: 72px; flex: none; }
+  h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.1; text-transform: uppercase; letter-spacing: .02em; }
+  h1 span { display: block; color: var(--red); text-transform: none; letter-spacing: 0; font-size: .7em; }
+  h2 { margin: 0 0 8px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: .05em; }
+  h3 { margin: 0; }
+  p { margin: 0 0 10px; }
+  .sim { border-left: 6px solid var(--caution); background: color-mix(in srgb, var(--caution) 18%, var(--paper)); padding: 10px 14px; border-radius: 6px; font-size: .95rem; }
+  .panels { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 0; padding: 0; list-style: none; }
+  .panels li { background: var(--paper); border: 2px solid var(--ink); border-radius: 10px; padding: 14px; }
+  .panels strong { display: block; margin-bottom: 4px; }
+  .panels span { color: var(--muted); font-size: .92rem; }
+  .step-head { display: flex; align-items: baseline; gap: 12px; }
+  .num { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+  .num small { font-size: 1rem; color: var(--muted); font-weight: 600; }
+  .stage { margin: 12px 0; padding: 10px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--paper); }
+  .stage svg { display: block; width: 100%; height: auto; max-height: 260px; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+  button { font: 700 1rem inherit; font-family: inherit; border: 2px solid var(--ink); background: var(--paper); color: var(--ink); border-radius: 8px; padding: 10px 16px; cursor: pointer; min-width: 6.5rem; }
+  button.primary { background: var(--red); color: var(--btn-ink, #fff); border-color: var(--red); }
+  button:disabled { opacity: .4; cursor: default; }
+  button:focus-visible, a:focus-visible { outline: 3px solid var(--denim); outline-offset: 2px; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); background: transparent; }
+  .dot.on { background: var(--ink); }
+  a { color: var(--denim); }
+  footer { color: var(--muted); font-size: .92rem; }
+  /* Drawing parts. Yellow = added in this step, same as the real guide. */
+  .pipe { fill: var(--pipe); stroke: var(--ink); stroke-width: 2; }
+  .new { fill: var(--new); }
+  .fab { fill: var(--fabric); stroke: var(--ink); stroke-width: 2; }
+  .lbl { font: 700 13px system-ui, sans-serif; fill: var(--ink); }
+</style>
+</head>
+<body>
+<main>
 
-      House rules for this page:
-        - One file. Styles and scripts stay inline; no build step, no CDN, no
-          network call, no backend. It must work opened from file://.
-        - Say what is simulated. If the interactive part replays a canned
-          transcript or fixture data, label it in the interface, not only here.
-        - Keep it current. A demo showing last release's behavior is worse
-          than no demo, because readers believe it.
-        - Nothing secret. This page is published; treat it as world-readable.
-    -->
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #0b1020;
-        --surface: #141c30;
-        --border: #27334d;
-        --text: #f2f5fa;
-        --muted: #9aa8bc;
-        --accent: #7dd3fc;
-        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      }
+  <header class="board">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="57" fill="#F7F1E6" stroke="#22303F" stroke-width="4"/>
+      <g transform="rotate(58 60 60)">
+        <rect x="54" y="22" width="12" height="88" rx="6" fill="#C9CDD3" stroke="#22303F" stroke-width="3"/>
+        <circle cx="60" cy="16" r="14" fill="#C9CDD3" stroke="#22303F" stroke-width="3"/>
+        <path d="M54.5 1 v12 a5.5 5.5 0 0 0 11 0 v-12 z" fill="#F7F1E6" stroke="#22303F" stroke-width="3"/>
+      </g>
+      <path d="M33 52 L30 26 L50 40 Z" fill="#9A9A9A" stroke="#22303F" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M87 52 L90 26 L70 40 Z" fill="#9A9A9A" stroke="#22303F" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="60" cy="66" rx="32" ry="27" fill="#9A9A9A" stroke="#22303F" stroke-width="3"/>
+      <ellipse cx="48" cy="62" rx="4" ry="5" fill="#22303F"/><ellipse cx="72" cy="62" rx="4" ry="5" fill="#22303F"/>
+      <path d="M56 70 h8 l-4 4 z" fill="#F2A0A0" stroke="#22303F" stroke-width="1.5"/>
+      <path d="M52 77 q4 4 8 0 q4 4 8 0" fill="none" stroke="#22303F" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <h1>Whisker &amp; Wrench<span>Demo: what we make, in two minutes</span></h1>
+      <p>Free, picture-first furniture plans and practical software for animal shelters and animal control.</p>
+    </div>
+  </header>
 
-      * {
-        box-sizing: border-box;
-      }
+  <p class="sim"><strong>What's real here:</strong> this page runs on its own with no server and no network. The stepper below replays three of the eleven steps from the real Plan 001 guide with simplified drawings. The real guide draws every part, has a full shopping list, and lives at <a href="https://whiskerandwrench.com/plans/001-shelter-cot/">whiskerandwrench.com/plans/001-shelter-cot/</a>. Plan 001 is a draft that hasn't been build-tested yet.</p>
 
-      body {
-        margin: 0;
-        padding: clamp(24px, 5vw, 64px);
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.65;
-      }
+  <ul class="panels">
+    <li><strong>Furniture plans</strong><span>Raised dog cots, cat towers and more, built only from parts on the shelf at Home Depot or Lowe's. Each plan is a LEGO-style guide: one step at a time, new parts in yellow.</span></li>
+    <li><strong>For shelters</strong><span>Plans are free. Hands-on help is sliding scale, and a shelter can fund it with its own fundraiser. See <a href="https://whiskerandwrench.com/shelters/">For shelters</a>.</span></li>
+    <li><strong>Software (research)</strong><span>An admin app for records, calls and dispatch, and an adopter app for new pet parents. We're talking with shelters and animal control officers first.</span></li>
+  </ul>
 
-      main {
-        width: min(100%, 900px);
-        margin: 0 auto;
-      }
+  <section class="board" aria-labelledby="try">
+    <h2 id="try">Try the guide stepper</h2>
+    <p>This is how every build guide works. Click Next, or use the arrow keys.</p>
+    <div class="step-head">
+      <div class="num" id="num">1<small>/3</small></div>
+      <h3 id="title">Cut the pipe</h3>
+    </div>
+    <div class="stage" id="stage"></div>
+    <p id="text"></p>
+    <div class="nav">
+      <button type="button" id="prev">Back</button>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <button type="button" class="primary" id="next">Next</button>
+    </div>
+  </section>
 
-      h1 {
-        margin: 0 0 12px;
-        font-size: clamp(2rem, 5vw, 3rem);
-        letter-spacing: -0.03em;
-      }
+  <footer>
+    <p>Source, setup and tests: <a href="https://github.com/esanacore/whisker-and-wrench#readme">README on GitHub</a>. Live site: <a href="https://whiskerandwrench.com/">whiskerandwrench.com</a>. Built to <a href="https://github.com/esanacore/engineering-constitution">Eric's Engineering Constitution</a>.</p>
+    <p>Build plans are CC BY-NC 4.0. Site code is MIT.</p>
+  </footer>
 
-      .tagline {
-        margin: 0 0 32px;
-        max-width: 60ch;
-        color: var(--muted);
-        font-size: 1.1rem;
-      }
-
-      .notice {
-        margin: 0 0 32px;
-        padding: 14px 16px;
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--accent);
-        border-radius: 10px;
-        background: var(--surface);
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .panels {
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        margin: 0 0 32px;
-        padding: 0;
-        list-style: none;
-      }
-
-      .panels li {
-        padding: 18px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: var(--surface);
-      }
-
-      .panels strong {
-        display: block;
-        margin-bottom: 6px;
-      }
-
-      .panels span {
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .stage {
-        padding: 20px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        background: var(--surface);
-      }
-
-      .stage output {
-        display: block;
-        min-height: 4.5rem;
-        margin-top: 14px;
-        white-space: pre-wrap;
-        font-family: ui-monospace, Consolas, monospace;
-        font-size: 0.9rem;
-      }
-
-      button {
-        padding: 10px 16px;
-        color: #07101e;
-        border: 0;
-        border-radius: 10px;
-        background: var(--accent);
-        font: inherit;
-        font-weight: 650;
-        cursor: pointer;
-      }
-
-      button:focus-visible,
-      a:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 3px;
-      }
-
-      footer {
-        margin-top: 40px;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      a {
-        color: var(--accent);
-      }
-    </style>
-  </head>
-  <body data-demo-state="constitution-demo-template-placeholder">
-    <main>
-      <h1>&lt;Project Name&gt;</h1>
-      <p class="tagline">&lt;One sentence a non-technical reader understands: what this does and who it is for.&gt;</p>
-
-      <p class="notice">
-        This demo runs entirely in your browser against a recorded example.
-        &lt;State what the real thing needs — an account, a server, specific
-        hardware — and link the setup guide.&gt;
-      </p>
-
-      <ul class="panels">
-        <li>
-          <strong>&lt;Capability one&gt;</strong>
-          <span>&lt;What a reader gets from it.&gt;</span>
-        </li>
-        <li>
-          <strong>&lt;Capability two&gt;</strong>
-          <span>&lt;What a reader gets from it.&gt;</span>
-        </li>
-        <li>
-          <strong>&lt;Capability three&gt;</strong>
-          <span>&lt;What a reader gets from it.&gt;</span>
-        </li>
-      </ul>
-
-      <section class="stage" aria-labelledby="stage-title">
-        <h2 id="stage-title">Try it</h2>
-        <p>&lt;Replace this with the smallest interaction that shows the product working.&gt;</p>
-        <button id="run" type="button">Run the example</button>
-        <p class="notice" hidden id="running">Playing the recorded example…</p>
-        <output id="result" role="status" aria-live="polite"></output>
-      </section>
-
-      <footer>
-        <p>
-          Source and setup: <a href="README.md">README</a>.
-          Built to <a href="constitution/DOCUMENTATION.md">Eric's Engineering Constitution</a>.
-        </p>
-      </footer>
-    </main>
-
-    <script>
-      // Replace with the real scripted interaction. Keep it dependency-free
-      // and keep any simulated output visibly labelled as simulated.
-      const transcript = [
-        "> example input",
-        "recorded response line one",
-        "recorded response line two",
-      ];
-
-      const runButton = document.getElementById("run");
-      const running = document.getElementById("running");
-      const result = document.getElementById("result");
-
-      // Guarded against a second click mid-playback: without this, two runs
-      // interleave their lines and the demo looks broken.
-      runButton.addEventListener("click", () => {
-        runButton.disabled = true;
-        running.hidden = false;
-        result.textContent = "";
-
-        transcript.forEach((line, index) => {
-          window.setTimeout(() => {
-            result.textContent += `${line}\n`;
-            if (index === transcript.length - 1) {
-              runButton.disabled = false;
-              running.hidden = true;
-            }
-          }, (index + 1) * 350);
-        });
-      });
-    </script>
-  </body>
+</main>
+<script>
+(function () {
+  // Three simplified steps. The real guide has eleven and draws them in isometric 3D.
+  const STEPS = [
+    {
+      t: "Cut the pipe",
+      text: "Mark and cut every piece from a 10-foot stick of 1-inch PVC. Most big-box stores will cut it for free if you hand them the list.",
+      svg: '<svg viewBox="0 0 400 120" role="img" aria-label="A cut list: two long pieces, two medium pieces, and short legs">' +
+        '<rect class="pipe new" x="20" y="20" width="240" height="16" rx="4"/><text class="lbl" x="270" y="33">C · 26½″ ×2</text>' +
+        '<rect class="pipe new" x="20" y="50" width="220" height="16" rx="4"/><text class="lbl" x="270" y="63">B · 24½″ ×2</text>' +
+        '<rect class="pipe new" x="20" y="80" width="40" height="16" rx="4"/><rect class="pipe new" x="70" y="80" width="40" height="16" rx="4"/>' +
+        '<text class="lbl" x="120" y="93">D · 4″ legs ×4, plus A · 3½″ ×4</text></svg>'
+    },
+    {
+      t: "Build the leg assemblies",
+      text: "Push a short leg into the bottom of a tee and cap the end. Dry-fit everything first, no glue yet. Make four.",
+      svg: '<svg viewBox="0 0 400 120" role="img" aria-label="A tee fitting with a short leg and cap below it, times four">' +
+        '<rect class="pipe" x="120" y="30" width="160" height="22" rx="5"/>' +
+        '<rect class="pipe" x="185" y="20" width="30" height="42" rx="4"/>' +
+        '<rect class="pipe new" x="190" y="62" width="20" height="30"/><rect class="pipe new" x="184" y="90" width="32" height="12" rx="4"/>' +
+        '<text class="lbl" x="300" y="95">× 4</text></svg>'
+    },
+    {
+      t: "Close the frame and add the bed",
+      text: "Join the long and short sides with elbows, glue every joint, then screw the vinyl panel to the underside so no edge is reachable.",
+      svg: '<svg viewBox="0 0 400 120" role="img" aria-label="A finished rectangular frame with a blue fabric panel and four legs">' +
+        '<polygon class="fab new" points="60,30 340,30 360,70 40,70"/>' +
+        '<rect class="pipe" x="40" y="62" width="320" height="14" rx="4"/><rect class="pipe" x="60" y="24" width="280" height="12" rx="4"/>' +
+        '<rect class="pipe" x="52" y="76" width="14" height="28"/><rect class="pipe" x="334" y="76" width="14" height="28"/>' +
+        '<rect class="pipe" x="72" y="36" width="12" height="22"/><rect class="pipe" x="316" y="36" width="12" height="22"/>' +
+        '<text class="lbl" x="150" y="55">Done. Hose it down.</text></svg>'
+    }
+  ];
+  let i = 0;
+  const $ = (id) => document.getElementById(id);
+  $("dots").innerHTML = STEPS.map(() => '<span class="dot"></span>').join("");
+  function show() {
+    const s = STEPS[i];
+    $("num").innerHTML = (i + 1) + "<small>/" + STEPS.length + "</small>";
+    $("title").textContent = s.t;
+    $("stage").innerHTML = s.svg;
+    $("text").textContent = s.text;
+    $("prev").disabled = i === 0;
+    $("next").textContent = i === STEPS.length - 1 ? "Start over" : "Next";
+    [...$("dots").children].forEach((d, k) => d.className = "dot" + (k === i ? " on" : ""));
+  }
+  $("prev").onclick = () => { if (i > 0) { i--; show(); } };
+  $("next").onclick = () => { i = i < STEPS.length - 1 ? i + 1 : 0; show(); };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") $("next").click();
+    if (e.key === "ArrowLeft") $("prev").click();
+  });
+  show();
+})();
+</script>
+</body>
 </html>
