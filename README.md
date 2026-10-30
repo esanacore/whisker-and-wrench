@@ -14,6 +14,7 @@ Tools, plans and software to help animal shelters and animal control. Website: [
 - **Automated checks**: every push builds the site, validates the HTML, checks internal and external links, and runs the engineering constitution's checks.
 - **Auto-deploy**: pushes to `main` deploy to Cloudflare Pages once the checks pass.
 - **Software**: research only so far (see `docs/`).
+- **Demo**: [demo.html](demo.html) is a one-file tour you can open from a clone; it's also live at [whiskerandwrench.com/demo.html](https://whiskerandwrench.com/demo.html).
 
 ```mermaid
 flowchart LR
@@ -88,9 +89,10 @@ CLAUDE.md                     Context for Claude Code sessions
 ROADMAP.md                    Plan series and software roadmap
 TODO.md / CHANGELOG.md        Living task list and release notes
 site/                         Website source (home, plans index, CSS, headers)
+demo.html                     Self-contained demo page (served at /demo.html)
 plans/
   LICENSE                     CC BY-NC 4.0 for all build plans
-  001-shelter-cot/            Plan 001: guide.html + README spec
+  001-shelter-cot/            Plan 001: guide.html, guide.css, guide.js + README spec
 scripts/
   build-site.sh               Assemble dist/ from site/ and plans/
   test-site.sh                Full test suite
