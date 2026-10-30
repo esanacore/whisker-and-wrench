@@ -14,6 +14,9 @@ This project follows semantic versioning.
 - CI: HTML validation, internal and external link checks, requirement smoke checks, and the engineering constitution's checks.
 - Deploy workflow for Cloudflare Pages on pushes to `main`.
 - Licenses: MIT for code, CC BY-NC 4.0 for build plans.
+- Demo page at `/demo.html`: a single self-contained file that shows what Whisker & Wrench makes, with a three-step simulated stepper, labelled as such.
+- Open Graph share image (`/assets/og.png`) and `og:`/Twitter card tags on every page, so links posted on social media show the mascot and tagline.
+- Real content in `docs/SETUP.md`, `docs/COMMAND_REFERENCE.md` and `docs/TROUBLESHOOTING.md` (they were constitution placeholders).
 - Browser tests in CI: Playwright clicks through every Plan 001 step and checks each page fits a phone screen, and axe checks every page for accessibility problems.
 
 ### Changed
@@ -29,3 +32,5 @@ This project follows semantic versioning.
 ### Removed
 
 ### Security
+
+- Content-Security-Policy no longer allows `'unsafe-inline'` for scripts or styles. The Plan 001 guide's CSS and JS moved from inline blocks to `guide.css` and `guide.js`, and a smoke check now fails the build if any page gets inline code. `demo.html` alone keeps a relaxed rule because it must be one file.

@@ -28,13 +28,14 @@ A requirement with no verifying test is a coverage gap. Record it in `docs/TEST_
 | FR-003 | MUST | Guides served from their source file | FR-003-AC-1 | `scripts/test-site.sh` smoke checks (FR-003) | Verified |
 | FR-004 | MUST | Every page links home | FR-004-AC-1 | `scripts/test-site.sh` smoke checks (FR-004) | Verified |
 | FR-005 | MUST | "For shelters" page with pricing, funding, steps, contact | FR-005-AC-1, FR-005-AC-2 | `scripts/test-site.sh` smoke checks (FR-005); `tests/browser` (axe + 375px for `/shelters/`) | Verified |
-| FR-005 | MUST | Guide stepper works in a browser | FR-005-AC-1 | `tests/browser/smoke.spec.mjs` ("Plan 001 stepper walks through every step") | Verified |
+| FR-006 | MUST | Guide stepper works in a browser | FR-006-AC-1 | `tests/browser/smoke.spec.mjs` ("Plan 001 stepper walks through every step") | Verified |
+| FR-007 | MUST | Self-contained demo page | FR-007-AC-1, FR-007-AC-2 | `scripts/test-site.sh` smoke checks (FR-007); html-validate; `tests/browser` (axe + 375px for `/demo.html`) | Verified |
 
 ## Non-Functional Requirements
 
 | Requirement ID | Level | Description | Acceptance Criteria | Verifying Tests | Status |
 | --- | --- | --- | --- | --- | --- |
-| NFR-001 | MUST | Security headers, no secrets | NFR-001-AC-1, NFR-001-AC-2 | `scripts/test-site.sh` smoke checks (NFR-001); `constitution-secrets.yml` | Verified |
+| NFR-001 | MUST | Security headers, no secrets, strict CSP | NFR-001-AC-1, NFR-001-AC-2, NFR-001-AC-3 | `scripts/test-site.sh` smoke checks (NFR-001, including the no-inline check); `constitution-secrets.yml` | Verified |
 | NFR-002 | MUST | Valid HTML, no broken internal links | NFR-002-AC-1, NFR-002-AC-2 | `scripts/test-site.sh` (html-validate, `check_links.py`); `scripts/test_check_links.sh` | Verified |
 | NFR-003 | SHOULD | External links work | NFR-003-AC-1 | `.github/workflows/site.yml` lychee step | Verified |
 | NFR-004 | MUST | Deploy only after checks pass | NFR-004-AC-1 | `.github/workflows/site.yml` (`deploy` needs `check`) | Verified |

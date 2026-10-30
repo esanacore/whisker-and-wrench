@@ -52,11 +52,11 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Acceptance criteria:
   - `FR-004-AC-1`: Every built page contains a link to `/`.
 
-**FR-005** `MUST` Each plan guide's step-by-step viewer works in a browser.
+**FR-006** `MUST` Each plan guide's step-by-step viewer works in a browser.
 
 - Level: `MUST`
 - Acceptance criteria:
-  - `FR-005-AC-1`: On `/plans/001-shelter-cot/`, clicking Next walks through every step in order, each showing its title and a drawing; Back goes to the previous step; the last step's button reads "Start over" and returns to step 1; no console errors.
+  - `FR-006-AC-1`: On `/plans/001-shelter-cot/`, clicking Next walks through every step in order, each showing its title and a drawing; Back goes to the previous step; the last step's button reads "Start over" and returns to step 1; no console errors.
 
 **FR-005** `MUST` A "For shelters" page explains how to work with Whisker & Wrench: what we help with, pricing, how to fund it, the steps, and how to get in touch.
 
@@ -64,6 +64,13 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Acceptance criteria:
   - `FR-005-AC-1`: `/shelters/` has Pricing, How to pay for it, How it works, and a `#contact` section.
   - `FR-005-AC-2`: the home page, plans index and 404 page link to `/shelters/`.
+
+**FR-007** `MUST` A self-contained demo page (`demo.html`, served at `/demo.html`) shows what Whisker & Wrench makes without a server or network, and says what is simulated.
+
+- Level: `MUST`
+- Acceptance criteria:
+  - `FR-007-AC-1`: `dist/demo.html` is built from `demo.html`, is valid HTML, passes axe and the 375px check, and has no external script, style or font.
+  - `FR-007-AC-2`: The page labels its stepper as a simulation and links to the real guide.
 
 ## Non-Functional Requirements
 
@@ -74,6 +81,7 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Level: `MUST`
 - Acceptance criteria:
   - `NFR-001-AC-1`: `_headers` sets a Content-Security-Policy and `X-Content-Type-Options: nosniff` for every path.
+  - `NFR-001-AC-3`: The site-wide CSP has no `'unsafe-inline'`, and no page except `demo.html` has inline script or style.
   - `NFR-001-AC-2`: The constitution secrets sweep passes on every push.
 
 ### Reliability
