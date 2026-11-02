@@ -34,3 +34,4 @@ This project follows semantic versioning.
 ### Security
 
 - Content-Security-Policy no longer allows `'unsafe-inline'` for scripts or styles. The Plan 001 guide's CSS and JS moved from inline blocks to `guide.css` and `guide.js`, and a smoke check now fails the build if any page gets inline code. `demo.html` alone keeps a relaxed rule because it must be one file.
+- CSP allows Cloudflare Web Analytics (`static.cloudflareinsights.com` script, `cloudflareinsights.com` connect), which Pages injects on every page. Cookie-free, no personal data.
