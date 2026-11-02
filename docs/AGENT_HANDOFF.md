@@ -19,24 +19,24 @@ format.
 
 ## Latest Handoff
 
-### Session: 2026-10-30 (Claude Code, batch: strict CSP, demo page, share image, docs)
-- **Accomplishments**: Merged Dependabot PRs #12 (constitution) and #13 (html-validate 11.17.0). Moved the Plan 001 guide's inline CSS and JS into `guide.css` and `guide.js` and dropped `'unsafe-inline'` from the CSP; a smoke check now fails on any inline script or style. Replaced the placeholder `demo.html` with a real self-contained demo (served at `/demo.html`, in the browser tests). Added an Open Graph image (`site/assets/og.png`) and `og:`/Twitter tags on every page. Wrote real `docs/SETUP.md`, `docs/COMMAND_REFERENCE.md` and `docs/TROUBLESHOOTING.md`. Renumbered the stepper requirement to FR-006 (it collided with FR-005) and added FR-007 for the demo.
-- **Verification Run**: `bash scripts/test-site.sh` passes (6 pages valid, 0 broken links, all smoke checks, 20 of 20 browser tests). Served `dist/` locally with the exact `_headers` CSP and checked in a browser: the guide renders and steps with no console errors, and the demo stepper works under its own rule.
-- **Known Blockers**: none. Contact email (hello@) is still waiting on Eric's Cloudflare Email Routing setup.
-- **Context Hints**: `demo.html` is the only page allowed inline code (its own `/demo.html` rule in `site/_headers`). To re-render the share image, screenshot a 1200×630 HTML template with Playwright (the template isn't in the repo; see the TODO entry). `.constitution-bootstrap/` is still there; deleting files needs Eric's OK.
+### Session: 2026-11-01 (Claude Code, Cloudflare Web Analytics in the CSP)
+- **Accomplishments**: Allowed Cloudflare Web Analytics in all three CSP rules (`static.cloudflareinsights.com` script, `cloudflareinsights.com` connect), PR #17, after the strict CSP from PR #14 blocked the beacon Pages injects. Also merged Dependabot's constitution bump (#16). Earlier this batch: strict CSP, the `/demo` page, the Open Graph image and tags, and real setup/command/troubleshooting docs (PRs #14 and #15).
+- **Verification Run**: `bash scripts/test-site.sh` passes (20 of 20 browser tests). Live home page and `/demo` checked in a browser after the deploy: no console errors; `curl -I` shows the new `script-src`.
+- **Known Blockers**: none. Contact email (hello@) still waits on Eric's Cloudflare Email Routing setup.
+- **Context Hints**: `site/_headers` has three CSP blocks (`/*`, `/demo.html`, `/demo`); change all three together. The share image is `site/assets/og.png`; re-render it with Playwright if the tagline or mascot changes. `.constitution-bootstrap/` is still in the repo; deleting it needs Eric's OK.
 
 #### Next Steps
 
 **Human action required:** steps 1, 2, 3.
 
-1. [ ] **HUMAN**: Review and merge the PR
-   - **Why a human:** it changes the site's security headers and adds a public page.
-   - **Done when:** the PR is merged and the `Site` run on `main` is green.
-2. [ ] **HUMAN**: After the deploy, paste https://whiskerandwrench.com into a social post preview (or https://www.opengraph.xyz/) and check the card shows the mascot image
+1. [ ] **HUMAN**: Check a link preview of https://whiskerandwrench.com (for example at https://www.opengraph.xyz/) shows the mascot card
    - **Why a human:** link-preview crawlers can't be run from CI.
-   - **Done when:** the preview shows the cat badge and "Better beds. Better tools."
-3. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
+   - **Done when:** the card shows the cat badge and "Better beds. Better tools."
+2. [ ] **HUMAN**: Set up Cloudflare Email Routing for hello@whiskerandwrench.com
    - **Why a human:** it verifies Eric's Gmail and adds DNS records in his zone.
    - **Done when:** Email Routing shows `hello@whiskerandwrench.com` as active.
-4. [ ] **AGENT**: Once Eric OKs it, delete `.constitution-bootstrap/`.
-5. [ ] **AUTOMATED**: Every push to `main` deploys to whiskerandwrench.com.
+3. [ ] **HUMAN**: Decide whether `.constitution-bootstrap/` can be deleted
+   - **Why a human:** Eric asked to be consulted before any file deletion.
+   - **Done when:** Eric has said yes or no.
+4. [ ] **AGENT**: Delete `.constitution-bootstrap/` on a yes, and swap hello@ into `/shelters/#contact` once email is live.
+5. [ ] **AUTOMATED**: Every push to `main` deploys the site; Web Analytics collects in the Cloudflare dashboard.
