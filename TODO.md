@@ -34,5 +34,5 @@ Keep entries specific, actionable, and current.
 
 ## Nice-to-Have
 
-- [ ] Cloudflare Web Analytics (cookie-free) once there's traffic.
+- [x] Cloudflare Web Analytics (cookie-free): Pages injects the beacon; the CSP allows it since 2026-11-01. View stats in the Cloudflare dashboard under Web Analytics.
 - [x] Open Graph image for link previews (`site/assets/og.png`, rendered from a small HTML template with Playwright; re-render if the tagline or mascot changes).
