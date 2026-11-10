@@ -13,7 +13,7 @@ Tools, plans and software to help animal shelters and animal control. Website: [
 - **Plan 001: PVC Shelter Cot** (`plans/001-shelter-cot/`): an interactive, LEGO-style build guide for a raised dog cot made only from big-box plumbing parts. Served at `/plans/001-shelter-cot/`. Draft, not yet build-tested.
 - **Automated checks**: every push builds the site, validates the HTML, checks internal and external links, and runs the engineering constitution's checks.
 - **Auto-deploy**: pushes to `main` deploy to Cloudflare Pages once the checks pass.
-- **Software**: research only so far (see `docs/`).
+- **Software preview** (`/software/`): walk through a fictional stray-dog call from dispatch to shelter intake. Case progress resets on refresh.
 - **Demo**: [demo.html](demo.html) is a one-file tour you can open from a clone; it's also live at [whiskerandwrench.com/demo.html](https://whiskerandwrench.com/demo.html).
 
 ```mermaid
@@ -72,7 +72,7 @@ Same command on every platform (use Git Bash on Windows):
 bash scripts/test-site.sh
 ```
 
-It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, runs the link checker's own tests, then opens the site in headless Chromium (Playwright) to click through the Plan 001 steps, check every page fits a 375px phone screen, and run axe accessibility checks. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
+It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, runs the link checker's own tests, then opens the site in headless Chromium (Playwright) to click through the Plan 001 steps and the dispatch to intake walkthrough, check every page fits a 375px phone screen, and run axe accessibility checks. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
 
 ## Deploy
 

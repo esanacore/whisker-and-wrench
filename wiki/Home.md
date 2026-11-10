@@ -15,8 +15,7 @@ normal pull requests, then published to the built-in GitHub wiki on merge by
 
 ## What this project does
 
-Describe the project's purpose in a few sentences: the problem it solves, who
-uses it, and the shape of the solution.
+Whisker & Wrench publishes free furniture plans and prototypes software for animal shelters and animal control. The dispatch to intake preview walks through one fictional stray-dog call and resets on refresh.
 
 ## Getting started
 

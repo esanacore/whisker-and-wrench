@@ -14,6 +14,10 @@
 - Pet insurance info (referrals; actually selling insurance needs a license)
 - Adoption paperwork and shelter contact
 
+## First admin workflow preview
+
+The dispatch to intake preview uses a fictional stray-dog report. It shows assignment, the field outcome and the intake handoff. Use it with officers and shelter staff to learn what information must cross that boundary and what happens when a handoff falls through.
+
 ## Open questions
 
 - **One app per shelter vs one shared app.** Apple generally rejects near-identical apps built from a template unless each organization submits it under its own developer account. Options:

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dispatch to intake preview | Whisker &amp; Wrench</title>
+  <meta name="description" content="Try a fictional animal control call from dispatch through shelter intake.">
+  <meta property="og:title" content="Dispatch to intake preview | Whisker &amp; Wrench">
+  <meta property="og:description" content="Try a fictional animal control call from dispatch through shelter intake.">
+  <meta property="og:url" content="https://whiskerandwrench.com/software/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://whiskerandwrench.com/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Whisker &amp; Wrench: Better beds. Better tools. Happier animals.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://whiskerandwrench.com/software/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Big+Shoulders+Display:wght@900&amp;family=Fredoka:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/software/preview.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="44" height="44">Whisker &amp; Wrench</a>
+    <nav aria-label="Main">
+      <a href="/plans/">Plans</a>
+      <a href="/shelters/">For shelters</a>
+      <a href="/#software">Software</a>
+      <a href="https://github.com/esanacore/whisker-and-wrench">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero">
+    <span class="eyebrow">Software preview · fictional case</span>
+    <h1>Dispatch to intake</h1>
+    <p>Walk through one stray-dog call as it passes from dispatch to a field officer and then to shelter intake. Refreshing the page starts a new walkthrough.</p>
+  </section>
+
+  <section aria-labelledby="call">
+    <h2 id="call">Sample call WW-001</h2>
+    <div class="callout">
+      <p>A loose adult dog was reported near the fictional Maple Park trailhead.</p>
+      <p role="status" aria-live="polite" id="case-status">Status: Reported. Dispatch has received the call.</p>
+      <noscript><p>Enable JavaScript to try the walkthrough.</p></noscript>
+      <div>
+        <button class="btn" id="advance-case" type="button" disabled>Assign to field officer</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="handoff-title" id="intake-handoff" hidden>
+    <h2 id="handoff-title">Shelter intake handoff</h2>
+    <div class="card">
+      <p><strong>Case:</strong> WW-001</p>
+      <p><strong>Animal:</strong> Adult dog, identity unknown.</p>
+      <p><strong>Found at:</strong> Maple Park trailhead.</p>
+      <p><strong>Field outcome:</strong> Officer secured the dog and brought it to the shelter.</p>
+      <p><strong>Intake follow-up:</strong> Create an intake record and check for identification.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

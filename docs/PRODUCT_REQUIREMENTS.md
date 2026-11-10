@@ -22,7 +22,7 @@ Each requirement carries a stable ID and explicit acceptance criteria. The mappi
 
 ## Product Summary
 
-The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index and Plan 001. The software products are out of scope until research is done (see `docs/product/app-vision.md`).
+The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index and Plan 001. The site includes a fictional dispatch to intake software preview. Operational software is outside this release (see `docs/product/app-vision.md`).
 
 ## Functional Requirements
 
@@ -71,6 +71,12 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - Acceptance criteria:
   - `FR-007-AC-1`: `dist/demo.html` is built from `demo.html`, is valid HTML, passes axe and the 375px check, and has no external script, style or font.
   - `FR-007-AC-2`: The page labels its stepper as a simulation and links to the real guide.
+
+**FR-008** `MUST` Staff can rehearse the handoff of a fictional animal control call to shelter intake.
+
+- `FR-008-AC-1`: The home page links to `/software/`. The sample starts at Reported and advances through Assigned, Dog secured and Handed off. The first action works from the keyboard.
+- `FR-008-AC-2`: The completed case reveals an intake summary with the case reference, animal, location, field outcome and intake follow-up.
+- `FR-008-AC-3`: Restarting or refreshing restores the initial case and hides the handoff. The walkthrough uses no browser storage.
 
 ## Non-Functional Requirements
 

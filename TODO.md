@@ -6,6 +6,8 @@ Keep entries specific, actionable, and current.
 
 ## Features
 
+- [ ] Walk through the dispatch to intake preview with an officer and shelter intake staff. Record missing fields, handoff exceptions, and which system owns each record before adding persistence.
+
 - [ ] Decide on `www.whiskerandwrench.com` and the extra domains as redirects to the apex.
 - [~] "For shelters" page: drafted in PR #7 with a GitHub-issues contact fallback.
 - [ ] Set up hello@whiskerandwrench.com with Cloudflare Email Routing (forwards to Eric's Gmail; adds 3 MX + 1 SPF TXT record, approved 2026-10-26), then swap it into `/shelters/#contact`. Steps in `docs/OPERATIONS.md`.
