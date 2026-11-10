@@ -41,7 +41,7 @@
   <section class="hero">
     <span class="eyebrow">Software preview · fictional case</span>
     <h1>Dispatch to intake</h1>
-    <p>Walk through a fictional stray-dog call from dispatch to shelter intake. Try both a confirmed handoff and an intake delay. Refreshing the page starts a new walkthrough.</p>
+    <p>Walk through a fictional stray-dog call from dispatch to shelter intake. Play both roles: the field officer marks the case ready, and shelter intake confirms receipt. You can also rehearse a delay before or during intake. Refreshing the page starts a new walkthrough.</p>
   </section>
 
   <section aria-labelledby="call">
@@ -53,6 +53,7 @@
       <div class="chips">
         <button class="btn" id="advance-case" type="button" disabled>Assign to field officer</button>
         <button class="btn" id="delay-case" type="button" hidden>Shelter intake unavailable</button>
+        <button class="btn" id="decline-receipt" type="button" hidden>Cannot confirm receipt</button>
       </div>
     </div>
   </section>
@@ -73,6 +74,7 @@
       <p><strong>Animal:</strong> Adult dog, identity unknown.</p>
       <p><strong>Found at:</strong> Maple Park trailhead.</p>
       <p><strong>Field outcome:</strong> Officer secured the dog and brought it to the shelter.</p>
+      <p><strong>Receipt:</strong> Shelter intake confirmed receipt for WW-001.</p>
       <p><strong>Intake follow-up:</strong> Create an intake record and check for identification.</p>
     </div>
   </section>

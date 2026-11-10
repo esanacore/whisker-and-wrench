@@ -19,21 +19,21 @@ format.
 
 ## Latest Handoff
 
-- **Session**: 2026-11-09, shelter workflow and volunteer resources.
-- **Changes**: Added an intake delay and retry, a fundraising starter, a printable Plan 001 shopping list and a facilitator guide.
-- **Verification**: Declared site suite, requirements traceability, secrets sweep and visual inspection of Chromium's print layout.
-- **Release**: Keep the batch in Unreleased pending merge and verification of the main deployment. Prepare the first tagged site release from the integrated changes.
+- **Session**: 2026-11-09, separate receipt and local planning tools.
+- **Changes**: Added a separate fictional shelter receipt action and refusal with retry, a local fundraising estimator, and an ephemeral volunteer supply checklist.
+- **Verification**: The declared suite covers 29 Chromium tests. Requirements traceability and secrets checks passed. External links run in CI.
+- **Release**: Prepared 0.2.0. Publish the tag and GitHub Release from the verified main deployment after merge.
 - **Open follow-ups**: Cloudflare Email Routing, live link preview check, and maintainer approval before deleting `.constitution-bootstrap/`.
 
 ## Next Steps
 
-**Human action required:** steps 1 and 3.
+**Human action required:** steps 1 and 4.
 
-1. [ ] **HUMAN** — Review and merge the pull request after the required checks pass.
-   - **Why a human:** The maintainer approves publishing the updated preview and shelter resources.
+1. [ ] **HUMAN** — Review and merge the release preparation pull request after required checks pass.
+   - **Why a human:** The maintainer approves publishing the new workflow and resources.
    - **Done when:** The pull request is merged.
-2. [ ] **AUTOMATED** — Validate and deploy the site from main.
-3. [ ] **HUMAN** — Run both dispatch paths with a field officer and an intake worker, and ask a shelter volunteer to try the fundraising starter and print the shopping list.
-   - **Why a human:** Practitioners can check the handoff against local processes and confirm the resources work in a real planning session.
-   - **Done when:** The team records missing fields and practical feedback using fictional case examples.
-4. [ ] **AGENT** — Verify the main deployment, prepare the first tagged site release, and use practitioner feedback to specify the next software workflow.
+2. [ ] **AUTOMATED** — Run site CI and deploy from main.
+3. [ ] **AGENT** — Verify the deployment from the merge commit, then tag v0.2.0 and publish the matching GitHub Release using the changelog.
+4. [ ] **HUMAN** — Ask a field officer and an intake worker to compare field readiness with receipt confirmation. Ask a shelter volunteer to try the estimator and checklist.
+   - **Why a human:** Practitioners can confirm whether the simulated custody and planning steps fit how their teams work.
+   - **Done when:** Feedback is recorded using fictional cases and sample budgets.
