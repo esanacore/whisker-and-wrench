@@ -74,7 +74,7 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 
 **FR-008** `MUST` Staff can rehearse the handoff of a fictional animal control call to shelter intake.
 
-- `FR-008-AC-1`: The home page links to `/software/`. The sample starts at Reported and advances through Assigned, Dog secured and Handed off. The first action works from the keyboard.
+- `FR-008-AC-1`: The home page links to `/software/`. The sample starts at Reported and advances through Assigned, Dog secured, Awaiting receipt and Handed off. The first action works from the keyboard.
 - `FR-008-AC-2`: The completed case reveals an intake summary with the case reference, animal, location, field outcome and intake follow-up.
 - `FR-008-AC-3`: Restarting or refreshing restores the initial case and hides the handoff. The walkthrough uses no browser storage.
 
@@ -90,6 +90,21 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 **FR-011** `MUST` Volunteers can print the existing Plan 001 shopping list.
 
 - `FR-011-AC-1`: The print button opens browser printing. The print layout retains the plan title, draft notice and shopping list, and omits build controls and unrelated sections.
+
+**FR-012** `MUST` Field readiness and shelter receipt are separate actions in the fictional walkthrough.
+
+- `FR-012-AC-1`: Marking the animal ready shows Awaiting receipt and retains field custody. Only Confirm shelter receipt completes the handoff and shows the receipt in the summary.
+- `FR-012-AC-2`: Cannot confirm receipt returns the case to delay and moves keyboard focus to Retry shelter intake. After retry the case must be marked ready again.
+
+**FR-013** `MUST` The shelter fundraising starter can estimate the remaining amount in whole US dollars.
+
+- `FR-013-AC-1`: For each required amount from 0 to 1,000,000, calculate costs plus fees minus confirmed pledges, with a zero floor. Invalid inputs produce no estimate. Editing invalidates the previous estimate.
+- `FR-013-AC-2`: Calculation makes no network request. Refresh clears the estimate and user-entered amounts.
+
+**FR-014** `MUST` Volunteers can track supplies while shopping.
+
+- `FR-014-AC-1`: Each supply line can be checked from the keyboard and its quantity is announced with the item. The count updates and Clear checks or refresh resets all checks.
+- `FR-014-AC-2`: Checklist keyboard actions do not move the build step. Printed output retains the list and hides interactive checklist controls.
 
 ## Non-Functional Requirements
 
@@ -143,7 +158,7 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 
 ## Explicit Non-Goals
 
-- `WON'T` include accounts, forms, analytics cookies, or any user data in this release.
+- `WON'T` include accounts, server-submitted forms, analytics cookies, or collected user data in this release.
 - `WON'T` use a frontend framework or bundler.
 
 ## Acceptance Criteria Summary

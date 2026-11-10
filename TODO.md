@@ -9,7 +9,7 @@ Keep entries specific, actionable, and current.
 - [ ] Use the [facilitator guide](docs/product/dispatch-walkthrough.md) with an officer and shelter intake staff. Record missing fields, intake exceptions and which system owns each record before adding persistence.
 
 - [ ] Decide on `www.whiskerandwrench.com` and the extra domains as redirects to the apex.
-- [ ] Ask a shelter to test the fundraising starter with a sample budget and appeal, then refine the prompts.
+- [ ] Ask a shelter to test the fundraising estimator with a sample budget and appeal, then refine the prompts and whole-dollar assumption.
 - [ ] Set up hello@whiskerandwrench.com with Cloudflare Email Routing (forwards to Eric's Gmail; adds 3 MX + 1 SPF TXT record, approved 2026-10-26), then swap it into `/shelters/#contact`. Steps in `docs/OPERATIONS.md`.
 - [ ] Turn the Plan 001 guide renderer into a reusable template so new plans are mostly data (see ROADMAP).
 
