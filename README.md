@@ -10,10 +10,11 @@ Tools, plans and software to help animal shelters and animal control. Website: [
 ## Current Capabilities
 
 - **Website** (`site/`): home page, build plans index, 404 page. Plain HTML and CSS, no framework, dark mode, works on phones.
-- **Plan 001: PVC Shelter Cot** (`plans/001-shelter-cot/`): an interactive, LEGO-style build guide for a raised dog cot made only from big-box plumbing parts. Served at `/plans/001-shelter-cot/`. Draft, not yet build-tested.
+- **Plan 001: PVC Shelter Cot** (`plans/001-shelter-cot/`): an interactive, LEGO-style build guide for a raised dog cot made only from big-box plumbing parts. Served at `/plans/001-shelter-cot/`. Includes a printable shopping list for volunteers. Draft, not yet build-tested.
 - **Automated checks**: every push builds the site, validates the HTML, checks internal and external links, and runs the engineering constitution's checks.
 - **Auto-deploy**: pushes to `main` deploy to Cloudflare Pages once the checks pass.
-- **Software preview** (`/software/`): walk through a fictional stray-dog call from dispatch to shelter intake. Case progress resets on refresh.
+- **Shelter fundraising starter** (`/shelters/#fundraising-starter`): set a target and draft a donor appeal for raised beds.
+- **Software preview** (`/software/`): walk through a fictional stray-dog call with either a confirmed shelter handoff or a delay and retry. Case progress resets on refresh.
 - **Demo**: [demo.html](demo.html) is a one-file tour you can open from a clone; it's also live at [whiskerandwrench.com/demo.html](https://whiskerandwrench.com/demo.html).
 
 ```mermaid

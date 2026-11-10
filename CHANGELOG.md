@@ -8,6 +8,10 @@ This project follows semantic versioning.
 
 ### Added
 
+- Intake-delay and retry path in the dispatch preview. The sample shows who retains custody until the receiving shelter confirms the handoff.
+- Fundraising starter with a budget prompt, sample donor appeal and link to the cot shopping list.
+- Print layout and print button for the Plan 001 shopping list.
+
 - Dispatch to intake software preview at `/software/`. Step through a fictional stray-dog call, review the shelter intake handoff, and restart the sample.
 
 - "For shelters" page at `/shelters/`: what we help with, sliding-scale pricing, the fund-it-yourself model with a fundraising kit, and the steps to work together. Linked from the nav on every page.

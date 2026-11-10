@@ -41,7 +41,7 @@
   <section class="hero">
     <span class="eyebrow">Software preview · fictional case</span>
     <h1>Dispatch to intake</h1>
-    <p>Walk through one stray-dog call as it passes from dispatch to a field officer and then to shelter intake. Refreshing the page starts a new walkthrough.</p>
+    <p>Walk through a fictional stray-dog call from dispatch to shelter intake. Try both a confirmed handoff and an intake delay. Refreshing the page starts a new walkthrough.</p>
   </section>
 
   <section aria-labelledby="call">
@@ -50,9 +50,19 @@
       <p>A loose adult dog was reported near the fictional Maple Park trailhead.</p>
       <p role="status" aria-live="polite" id="case-status">Status: Reported. Dispatch has received the call.</p>
       <noscript><p>Enable JavaScript to try the walkthrough.</p></noscript>
-      <div>
+      <div class="chips">
         <button class="btn" id="advance-case" type="button" disabled>Assign to field officer</button>
+        <button class="btn" id="delay-case" type="button" hidden>Shelter intake unavailable</button>
       </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="delay-title" id="intake-delay" hidden>
+    <h2 id="delay-title">Intake delay</h2>
+    <div class="card">
+      <p><strong>Case:</strong> WW-001</p>
+      <p><strong>Custody:</strong> The field officer still has the dog.</p>
+      <p><strong>Pending:</strong> Dispatch is coordinating a receiving location. The handoff stays open until intake is confirmed.</p>
     </div>
   </section>
 
@@ -64,6 +74,14 @@
       <p><strong>Found at:</strong> Maple Park trailhead.</p>
       <p><strong>Field outcome:</strong> Officer secured the dog and brought it to the shelter.</p>
       <p><strong>Intake follow-up:</strong> Create an intake record and check for identification.</p>
+    </div>
+  </section>
+  <section aria-labelledby="feedback-title">
+    <h2 id="feedback-title">Review with your team</h2>
+    <div class="card">
+      <p>Run both paths with a field officer and an intake worker. Compare who has custody, who confirms receipt, and what information each person needs before the case can move forward.</p>
+      <p>Use fictional examples when sharing feedback. Public issues can be read by anyone.</p>
+      <a class="go" href="/shelters/#contact">Contact Whisker &amp; Wrench</a>
     </div>
   </section>
 </main>

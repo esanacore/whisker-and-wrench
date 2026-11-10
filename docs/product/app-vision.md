@@ -16,7 +16,7 @@
 
 ## First admin workflow preview
 
-The dispatch to intake preview uses a fictional stray-dog report. It shows assignment, the field outcome and the intake handoff. Use it with officers and shelter staff to learn what information must cross that boundary and what happens when a handoff falls through.
+The dispatch to intake preview uses a fictional stray-dog report. It shows assignment, the field outcome and the intake handoff. Use the [facilitator guide](dispatch-walkthrough.md) with officers and shelter staff to learn what information must cross that boundary and what happens when intake is delayed.
 
 ## Open questions
 

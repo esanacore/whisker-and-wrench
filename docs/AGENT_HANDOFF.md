@@ -19,21 +19,21 @@ format.
 
 ## Latest Handoff
 
-- **Session**: 2026-11-09, dispatch to intake preview.
-- **Accomplishments**: Added a public-facing walkthrough at `/software/` with one fictional case and an intake summary. Case progress is in memory.
-- **Verification**: The declared suite passed, including 24 browser tests. External link verification runs in CI.
-- **Release**: Keep the changes in Unreleased pending preview review and integration on main.
-- **Context**: Open follow-ups from the previous session include a live link preview check, Cloudflare Email Routing setup, and maintainer approval before deleting `.constitution-bootstrap/`.
+- **Session**: 2026-11-09, shelter workflow and volunteer resources.
+- **Changes**: Added an intake delay and retry, a fundraising starter, a printable Plan 001 shopping list and a facilitator guide.
+- **Verification**: Declared site suite, requirements traceability, secrets sweep and visual inspection of Chromium's print layout.
+- **Release**: Keep the batch in Unreleased pending merge and verification of the main deployment. Prepare the first tagged site release from the integrated changes.
+- **Open follow-ups**: Cloudflare Email Routing, live link preview check, and maintainer approval before deleting `.constitution-bootstrap/`.
 
 ## Next Steps
 
-**Human action required:** steps 1, 3.
+**Human action required:** steps 1 and 3.
 
-1. [ ] **HUMAN** — Review and merge the preview pull request after required checks pass.
-   - **Why a human:** The maintainer decides whether to publish the preview on the public site.
+1. [ ] **HUMAN** — Review and merge the pull request after the required checks pass.
+   - **Why a human:** The maintainer approves publishing the updated preview and shelter resources.
    - **Done when:** The pull request is merged.
-2. [ ] **AUTOMATED** — Build, validate and deploy the site from main.
-3. [ ] **HUMAN** — Walk through the fictional case with an animal control officer and shelter intake staff. Ask what they need to see at handoff and what happens when the shelter cannot accept the animal.
-   - **Why a human:** Practitioners can confirm local workflows and identify exceptions from experience.
-   - **Done when:** The required fields and exceptions are documented using fictional examples.
-4. [ ] **AGENT** — Use that feedback to specify the next workflow slice and identify which system owns each record.
+2. [ ] **AUTOMATED** — Validate and deploy the site from main.
+3. [ ] **HUMAN** — Run both dispatch paths with a field officer and an intake worker, and ask a shelter volunteer to try the fundraising starter and print the shopping list.
+   - **Why a human:** Practitioners can check the handoff against local processes and confirm the resources work in a real planning session.
+   - **Done when:** The team records missing fields and practical feedback using fictional case examples.
+4. [ ] **AGENT** — Verify the main deployment, prepare the first tagged site release, and use practitioner feedback to specify the next software workflow.
