@@ -37,3 +37,43 @@ test("FR-008: walk a sample call through dispatch and shelter intake", async ({ 
   await expect(page.evaluate(() => [localStorage.length, sessionStorage.length])).resolves.toEqual([0, 0]);
   expect(errors).toEqual([]);
 });
+
+test("FR-009: intake delay keeps custody visible until a confirmed handoff", async ({ page, errors }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/software/");
+
+  const delay = page.getByRole("button", { name: "Shelter intake unavailable" });
+  const retry = page.getByRole("button", { name: "Retry shelter intake" });
+  const pending = page.getByRole("region", { name: "Intake delay" });
+  const handoff = page.getByRole("region", { name: "Shelter intake handoff" });
+  const status = page.getByRole("status");
+
+  await expect(delay).toBeHidden();
+  await page.getByRole("button", { name: "Assign to field officer" }).click();
+  await expect(delay).toBeHidden();
+  await page.getByRole("button", { name: "Record dog secured" }).click();
+
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    await delay.focus();
+    await page.keyboard.press("Enter");
+    await expect(status).toContainText("Intake delayed");
+    await expect(retry).toBeFocused();
+    await expect(pending).toContainText("The field officer still has the dog");
+    await expect(handoff).toBeHidden();
+    await expect(delay).toBeHidden();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(375);
+    await retry.click();
+    await expect(status).toContainText("Dog secured");
+    await expect(pending).toBeHidden();
+    await expect(handoff).toBeHidden();
+  }
+
+  await page.getByRole("button", { name: "Complete shelter handoff" }).click();
+  await expect(handoff).toBeVisible();
+  await expect(pending).toBeHidden();
+  await page.getByRole("button", { name: "Restart sample call" }).click();
+  await expect(status).toContainText("Reported");
+  await expect(delay).toBeHidden();
+  await expect(handoff).toBeHidden();
+  expect(errors).toEqual([]);
+});

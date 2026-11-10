@@ -78,6 +78,19 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 - `FR-008-AC-2`: The completed case reveals an intake summary with the case reference, animal, location, field outcome and intake follow-up.
 - `FR-008-AC-3`: Restarting or refreshing restores the initial case and hides the handoff. The walkthrough uses no browser storage.
 
+**FR-009** `MUST` Staff can rehearse a delay in shelter intake.
+
+- `FR-009-AC-1`: Once the dog is secured, staff can select Shelter intake unavailable and see that the field officer retains custody. The completed handoff is hidden.
+- `FR-009-AC-2`: Retry returns to intake confirmation. The case can be delayed again or handed off explicitly. Restart clears both summaries.
+
+**FR-010** `MUST` Shelters can find a fundraising starter for raised beds.
+
+- `FR-010-AC-1`: The funding section links to a starter with a budget prompt, a sample appeal and a link to the Plan 001 shopping list.
+
+**FR-011** `MUST` Volunteers can print the existing Plan 001 shopping list.
+
+- `FR-011-AC-1`: The print button opens browser printing. The print layout retains the plan title, draft notice and shopping list, and omits build controls and unrelated sections.
+
 ## Non-Functional Requirements
 
 ### Security

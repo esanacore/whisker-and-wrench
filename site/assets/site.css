@@ -367,4 +367,4 @@ section > h2 {
 }
 .foot a { color: var(--caution); }
 
-#intake-handoff[hidden] { display: none; }
+section[hidden], .btn[hidden] { display: none; }

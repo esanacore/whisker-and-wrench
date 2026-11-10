@@ -9,7 +9,7 @@
 ## Website next steps
 
 1. Decide on `www` and the extra domains (whiskerandwrench.org, whiskerwrench.com) as redirects.
-2. Add a "for shelters" page: how to request a build, sliding scale, fundraising kit.
+2. Ask shelters to try the fundraising starter with a sample budget and donation appeal.
 3. Turn on Cloudflare Web Analytics (cookie-free) once there's traffic worth measuring.
 
 ## Furniture plan series
@@ -33,7 +33,7 @@ Also: small and large versions of 001 (only B, C and fabric lengths change).
 
 ## Software
 
-The dispatch to intake preview at `/software/` lets staff try the first admin workflow with a fictional case. The broader product direction still depends on field research.
+The dispatch to intake preview at `/software/` lets staff compare a confirmed handoff and a repeatable intake delay using one fictional case. The broader product direction still depends on field research.
 
 1. Interview Mom (ACO, Town of Babylon NY) about a day of animal control work: calls, dispatch, field visits, records, licensing, what software they use now and what's painful.
 2. Talk to 3 to 5 shelters about what they'd pay for.

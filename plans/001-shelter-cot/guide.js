@@ -186,6 +186,10 @@ const SHOP=[
 document.getElementById('shop').innerHTML=SHOP.map(r=>r.length===1?`<div class="sub">${r[0]}</div>`:
   `<div class="row"><span class="q">${r[0]}</span><span class="n">${r[1]}${r[2]?`<small>${r[2]}</small>`:''}</span><span class="tag">${r[3]}</span></div>`).join('');
 
+const printShoppingList = document.getElementById("print-shopping-list");
+printShoppingList.addEventListener("click", () => window.print());
+printShoppingList.hidden = false;
+
 /* Stepper */
 let i=0;try{const v=parseInt(localStorage.getItem('cot-step'),10);if(v>=0&&v<STEPS.length)i=v}catch(e){}
 const $=id=>document.getElementById(id),dots=$('dots');

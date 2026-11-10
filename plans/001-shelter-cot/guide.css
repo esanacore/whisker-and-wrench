@@ -126,3 +126,39 @@ section{display:flex;flex-direction:column;gap:14px}
 .crumbs a{color:var(--accent)}
 .foot{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 @media (prefers-reduced-motion:no-preference){.stage svg{animation:pop .25s ease-out}@keyframes pop{from{transform:translateY(4px)}to{transform:none}}}
+
+@media print {
+  body {
+    --ink: #000;
+    --muted: #333;
+    --line: #999;
+    color-scheme: light;
+  }
+
+  body, .wrap {
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .wrap {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .wrap > :not(.hero, #shopping-list),
+  .hero > :not(h1, .chips),
+  #print-shopping-list,
+  #shopping-list .tag {
+    display: none;
+  }
+
+  .hero { margin-bottom: 12pt; }
+  h1 { font-size: 22pt; }
+  h2 { font-size: 15pt; }
+  #shopping-list .row {
+    grid-template-columns: 2rem 1fr;
+    padding: 4pt 0;
+    break-inside: avoid;
+  }
+}
