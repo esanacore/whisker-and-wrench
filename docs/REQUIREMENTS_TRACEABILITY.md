@@ -30,6 +30,7 @@ A requirement with no verifying test is a coverage gap. Record it in `docs/TEST_
 | FR-005 | MUST | "For shelters" page with pricing, funding, steps, contact | FR-005-AC-1, FR-005-AC-2 | `scripts/test-site.sh` smoke checks (FR-005); `tests/browser` (axe + 375px for `/shelters/`) | Verified |
 | FR-006 | MUST | Guide stepper works in a browser | FR-006-AC-1 | `tests/browser/smoke.spec.mjs` ("Plan 001 stepper walks through every step") | Verified |
 | FR-007 | MUST | Self-contained demo page | FR-007-AC-1, FR-007-AC-2 | `scripts/test-site.sh` smoke checks (FR-007); html-validate; `tests/browser` (axe + 375px for `/demo.html`) | Verified |
+| FR-008 | MUST | Fictional dispatch to intake walkthrough | FR-008-AC-1, FR-008-AC-2, FR-008-AC-3 | `tests/browser/dispatch-preview.spec.mjs` | Verified |
 
 ## Non-Functional Requirements
 
@@ -46,8 +47,8 @@ A requirement with no verifying test is a coverage gap. Record it in `docs/TEST_
 
 | Metric | Count |
 | --- | --- |
-| Total requirements | 12 |
-| Verified | 12 |
+| Total requirements | 14 |
+| Verified | 14 |
 | In progress | 0 |
 | Not started | 0 |
 | Requirements without a verifying test (gaps) | 0 |

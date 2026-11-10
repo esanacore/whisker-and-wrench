@@ -366,3 +366,5 @@ section > h2 {
   gap: 6px;
 }
 .foot a { color: var(--caution); }
+
+#intake-handoff[hidden] { display: none; }

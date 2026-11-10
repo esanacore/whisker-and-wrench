@@ -5,8 +5,9 @@ This document provides a high-level overview of how this project is wired and or
 ## System Overview
 
 Today Whisker & Wrench is a static website plus build plans. There is no
-server, database or user data. The software products (admin app, adopter app)
-are still in research; see `docs/product/app-vision.md`.
+server, database or user data. The dispatch to intake preview in `site/software/` rehearses one admin workflow
+with a fixed fictional case. It keeps progress in memory and makes no case requests.
+See `docs/product/app-vision.md` for the broader product research.
 
 ## Component Diagram
 
