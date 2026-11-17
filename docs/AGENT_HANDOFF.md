@@ -19,21 +19,27 @@ format.
 
 ## Latest Handoff
 
-- **Session**: 2026-11-09, shelter workflow and volunteer resources.
-- **Changes**: Added an intake delay and retry, a fundraising starter, a printable Plan 001 shopping list and a facilitator guide.
-- **Verification**: Declared site suite, requirements traceability, secrets sweep and visual inspection of Chromium's print layout.
-- **Release**: Keep the batch in Unreleased pending merge and verification of the main deployment. Prepare the first tagged site release from the integrated changes.
-- **Open follow-ups**: Cloudflare Email Routing, live link preview check, and maintainer approval before deleting `.constitution-bootstrap/`.
+- **Session**: 2026-11-17, first weeks home checklist.
+- **Changes**: Added `/adopters/`, a five-question checklist for a fictional adopted dog. It links from the home page, the dispatch preview, and the demo. No products, doses, or saved answers.
+- **Verification**: `bash scripts/test-site.sh` passed (8 pages, 30 browser tests). Secrets sweep was clean. Chromium was checked at desktop width, 375px, and in dark mode, including the finished question list.
+- **Release**: Leave the change in Unreleased. Do not tag a release in this pull request.
+- **Open follow-ups**: Practitioner review of the checklist before any care instructions. The dispatch facilitator session, fundraising trial, Plan 001 test build, and Cloudflare email routing are unchanged and still open.
 
 ## Next Steps
 
 **Human action required:** steps 1 and 3.
 
-1. [ ] **HUMAN** — Review and merge the pull request after the required checks pass.
-   - **Why a human:** The maintainer approves publishing the updated preview and shelter resources.
-   - **Done when:** The pull request is merged.
-2. [ ] **AUTOMATED** — Validate and deploy the site from main.
-3. [ ] **HUMAN** — Run both dispatch paths with a field officer and an intake worker, and ask a shelter volunteer to try the fundraising starter and print the shopping list.
-   - **Why a human:** Practitioners can check the handoff against local processes and confirm the resources work in a real planning session.
-   - **Done when:** The team records missing fields and practical feedback using fictional case examples.
-4. [ ] **AGENT** — Verify the main deployment, prepare the first tagged site release, and use practitioner feedback to specify the next software workflow.
+1. [ ] **HUMAN** — Review and merge this pull request.
+   - **Why a human:** merging is the maintainer's decision.
+   - **Done when:** the pull request is merged and the site workflow on main is green.
+2. [ ] **AUTOMATED** — GitHub Actions validates the site and deploys it to Cloudflare Pages. _(blocked by step 1)_
+   - **Done when:** https://whiskerandwrench.com/adopters/ shows the first weeks home checklist.
+3. [ ] **HUMAN** — Ask a shelter educator or veterinarian to read the checklist and say whether the five questions are the right ones.
+   - **Why a human:** only someone who counsels new pet parents can judge the questions, and care instructions must wait for that review.
+   - **You need:** the published `/adopters/` page, and a person who does adoption counseling or veterinary care.
+   - **Procedure:**
+     1. Open the checklist and step through all five topics.
+     2. Note missing questions, using a fictional dog. Leave out names, addresses, and case records.
+     3. Send the notes back by a GitHub issue or another channel Eric chooses.
+   - **Done when:** the notes are recorded and no product names or doses have been added to the page.
+4. [ ] **AGENT** — Turn that feedback into the next checklist edit, still without doses, product names, or saved answers. _(blocked by step 3)_

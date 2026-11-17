@@ -32,3 +32,4 @@ Newest first.
 
 | Date | Session | Topics |
 | --- | --- | --- |
+| 2026-11-17 | [First weeks home checklist](2026-11-17-adopter-checklist.md) | adopters, first weeks home, FR-012, checklist, site/adopters, preview.js, new pet parent |

@@ -22,7 +22,7 @@ Each requirement carries a stable ID and explicit acceptance criteria. The mappi
 
 ## Product Summary
 
-The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index and Plan 001. The site includes a fictional dispatch to intake software preview. Operational software is outside this release (see `docs/product/app-vision.md`).
+The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index and Plan 001. The site includes two fictional software previews: dispatch to intake, and a first-weeks checklist for a new pet parent. Operational software is outside this release (see `docs/product/app-vision.md`).
 
 ## Functional Requirements
 
@@ -90,6 +90,12 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 **FR-011** `MUST` Volunteers can print the existing Plan 001 shopping list.
 
 - `FR-011-AC-1`: The print button opens browser printing. The print layout retains the plan title, draft notice and shopping list, and omits build controls and unrelated sections.
+
+**FR-012** `MUST` A new pet parent can rehearse questions for the first weeks after a fictional adoption.
+
+- `FR-012-AC-1`: The home page links to `/adopters/`. The checklist starts on food and advances through grooming, prevention, vaccine papers and town registration. The first action works from the keyboard.
+- `FR-012-AC-2`: The finished checklist lists questions to confirm with the shelter or a veterinarian, and the page states that it is not veterinary or legal advice and does not name products or doses.
+- `FR-012-AC-3`: Restarting or refreshing returns to the first topic and hides the question list. The walkthrough uses no browser storage.
 
 ## Non-Functional Requirements
 
