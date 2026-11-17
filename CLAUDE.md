@@ -102,6 +102,7 @@ Before completing work:
 - Update CHANGELOG.md for user-facing changes.
 - Consider security impact.
 - Propose new codebase learnings, user preferences, or major decisions to Eric and (upon approval) record them in `docs/MEMORY.md`.
+- Consult and extend the session log — before planning, read the newest rows of `docs/sessions/README.md` and search `docs/sessions/` for earlier sessions on the same topic (`bash constitution/scripts/find_sessions.sh <keyword>`), reading the ones that match; before completing non-trivial work, add this session's summary there (request, context, decisions, discoveries, outcome — a summary, never a transcript, and never a secret) and list it in the index (`constitution/AI_WORKFLOW.md`, "Session Summaries").
 - Identify useful follow-up work.
 - Clear or archive `docs/SESSION_PLAN.md`.
 - End every push with a Next Steps procedure (`constitution/AI_WORKFLOW.md`, "Next Steps Procedure"): a numbered checklist, each step tagged **HUMAN**, **AGENT**, or **AUTOMATED**, in the PR and `docs/AGENT_HANDOFF.md`.
