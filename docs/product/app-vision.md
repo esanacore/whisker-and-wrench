@@ -18,6 +18,10 @@
 
 The dispatch to intake preview uses a fictional stray-dog report. It shows assignment, the field outcome and the intake handoff. Use the [facilitator guide](dispatch-walkthrough.md) with officers and shelter staff to learn what information must cross that boundary and what happens when intake is delayed.
 
+## First adopter preview
+
+`/adopters/` is a five-topic checklist for a fictional adopted dog named Pebble. Each topic is a question for the shelter or a veterinarian: food, grooming, parasite prevention, vaccine papers, and town registration. It does not name products or doses, does not sell insurance, and does not store answers. A shelter educator or veterinarian should review it before any step becomes a care instruction.
+
 ## Open questions
 
 - **One app per shelter vs one shared app.** Apple generally rejects near-identical apps built from a template unless each organization submits it under its own developer account. Options:

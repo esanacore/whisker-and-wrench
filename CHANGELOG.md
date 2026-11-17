@@ -8,6 +8,7 @@ This project follows semantic versioning.
 
 ### Added
 
+- First weeks home checklist at `/adopters/`. A new pet parent can step through food, grooming, prevention, vaccine papers and town registration for a fictional adopted dog, then review the questions to confirm. The page gives no product names or doses and saves nothing.
 - Intake-delay and retry path in the dispatch preview. The sample shows who retains custody until the receiving shelter confirms the handoff.
 - Fundraising starter with a budget prompt, sample donor appeal and link to the cot shopping list.
 - Print layout and print button for the Plan 001 shopping list.

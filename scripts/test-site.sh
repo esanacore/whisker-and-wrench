@@ -52,9 +52,11 @@ for guide in plans/*/guide.html; do
     smoke_fail=1
   fi
 done
-for page in dist/index.html dist/plans/index.html dist/shelters/index.html dist/404.html dist/plans/*/index.html; do
+for page in dist/index.html dist/plans/index.html dist/shelters/index.html dist/software/index.html dist/adopters/index.html dist/404.html dist/plans/*/index.html; do
   must_contain "$page" 'href="/"' FR-004
 done
+must_contain dist/index.html 'href="/adopters/"' FR-012
+must_contain dist/adopters/index.html "not veterinary or legal advice" FR-012
 for heading in "Pricing" "How to pay for it" "How it works" 'id="contact"'; do
   must_contain dist/shelters/index.html "$heading" FR-005
 done

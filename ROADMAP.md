@@ -33,7 +33,7 @@ Also: small and large versions of 001 (only B, C and fabric lengths change).
 
 ## Software
 
-The dispatch to intake preview at `/software/` lets staff compare a confirmed handoff and a repeatable intake delay using one fictional case. The broader product direction still depends on field research.
+The dispatch to intake preview at `/software/` lets staff compare a confirmed handoff and a repeatable intake delay using one fictional case. The adopter preview at `/adopters/` lists questions for the first weeks after a fictional adoption and does not give care instructions. The broader product direction still depends on field research.
 
 1. Interview Mom (ACO, Town of Babylon NY) about a day of animal control work: calls, dispatch, field visits, records, licensing, what software they use now and what's painful.
 2. Talk to 3 to 5 shelters about what they'd pay for.

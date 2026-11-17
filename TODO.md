@@ -7,6 +7,7 @@ Keep entries specific, actionable, and current.
 ## Features
 
 - [ ] Use the [facilitator guide](docs/product/dispatch-walkthrough.md) with an officer and shelter intake staff. Record missing fields, intake exceptions and which system owns each record before adding persistence.
+- [ ] Ask a shelter educator or veterinarian to review the first-weeks checklist at `/adopters/` before any care instructions are added. Until then it stays a list of questions.
 
 - [ ] Decide on `www.whiskerandwrench.com` and the extra domains as redirects to the apex.
 - [ ] Ask a shelter to test the fundraising starter with a sample budget and appeal, then refine the prompts.
