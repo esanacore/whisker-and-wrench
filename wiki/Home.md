@@ -1,5 +1,7 @@
 # Home
 
+Current version **0.2.0**.
+
 Welcome to the project wiki. This is the landing page readers see first, and
 the hub the rest of the wiki links out from. Replace this scaffold text with a
 short description of what this project is and who it is for, then fill in or
@@ -15,7 +17,7 @@ normal pull requests, then published to the built-in GitHub wiki on merge by
 
 ## What this project does
 
-Whisker & Wrench publishes free furniture plans and prototypes software for animal shelters and animal control. The dispatch to intake preview walks through a fictional stray-dog call with an optional intake delay and retry. Shelters can use a fundraising starter and print the Plan 001 shopping list.
+Whisker & Wrench publishes free furniture plans and prototypes software for animal shelters and animal control. The dispatch to intake preview walks through a fictional stray-dog call with an optional intake delay and retry. Shelters can estimate a fundraising target, and volunteers can check off supplies or print the Plan 001 shopping list.
 
 ## Getting started
 

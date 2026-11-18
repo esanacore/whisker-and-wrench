@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Big+Shoulders+Display:wght@900&amp;family=Fredoka:wght@600;700&amp;display=swap">
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/shelters/fundraising.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -83,7 +84,7 @@
     <h2>How to pay for it</h2>
     <div class="callout">
       <h3>Run your own fundraiser, then pay the invoice</h3>
-      <p>Your shelter runs the fundraiser (a GoFundMe charity fundraiser works well), so donations go straight to you. If you're a registered nonprofit, that keeps them tax-deductible for your donors. Once it's funded, you pay our invoice. Start with the <a href="#fundraising-starter">fundraising starter</a> below.</p>
+      <p>Run the fundraiser through the donation page your shelter has approved. Once funded, use the proceeds to pay the written invoice. Start with the <a href="#fundraising-starter">fundraising starter</a> below.</p>
     </div>
   </section>
 
@@ -111,6 +112,25 @@
         <p>“Help [shelter name] raise [amount] for [number] raised beds. The funds will cover [materials or build costs]. Give through [official shelter donation page]. We'll post an update when the beds are ready.”</p>
         <p>Replace the brackets, confirm the budget and donation link with your shelter, and choose a date to report back to donors.</p>
       </div>
+    </div>
+    <div id="fundraising-estimator" hidden>
+      <form class="card" id="fundraising-form" aria-labelledby="estimator-title" aria-describedby="estimator-help" autocomplete="off">
+        <h3 id="estimator-title">Estimate a fundraising target</h3>
+        <p id="estimator-help">Use whole US dollars. Include delivery in project costs and subtract only confirmed pledges. The estimate stays on this page.</p>
+        <div class="estimator-fields">
+          <label>Project costs ($)
+            <input id="project-cost" type="number" min="0" max="1000000" step="1" inputmode="numeric" required>
+          </label>
+          <label>Expected fees ($)
+            <input id="project-fees" type="number" min="0" max="1000000" step="1" inputmode="numeric" value="0" required>
+          </label>
+          <label>Confirmed pledges ($)
+            <input id="project-pledges" type="number" min="0" max="1000000" step="1" inputmode="numeric" value="0" required>
+          </label>
+        </div>
+        <div><button class="btn" type="submit">Calculate target</button></div>
+        <p><output id="project-target" for="project-cost project-fees project-pledges"></output></p>
+      </form>
     </div>
   </section>
 

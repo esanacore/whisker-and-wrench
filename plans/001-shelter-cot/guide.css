@@ -149,6 +149,8 @@ section{display:flex;flex-direction:column;gap:14px}
   .wrap > :not(.hero, #shopping-list),
   .hero > :not(h1, .chips),
   #print-shopping-list,
+  #shopping-progress,
+  #shopping-list input,
   #shopping-list .tag {
     display: none;
   }

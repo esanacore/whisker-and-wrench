@@ -6,7 +6,13 @@ This project follows semantic versioning.
 
 ## Unreleased
 
+## 0.2.0 - 2026-11-09
+
 ### Added
+
+- Separate field readiness and shelter receipt actions in the dispatch preview, with retry when intake cannot confirm receipt.
+- Browser-only fundraising target estimator for whole US dollars.
+- Keyboard-accessible cot shopping checklist with progress and reset. The print layout keeps the supply list and omits checklist controls.
 
 - Intake-delay and retry path in the dispatch preview. The sample shows who retains custody until the receiving shelter confirms the handoff.
 - Fundraising starter with a budget prompt, sample donor appeal and link to the cot shopping list.

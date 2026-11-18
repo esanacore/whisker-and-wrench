@@ -1,6 +1,7 @@
 const status = document.querySelector("#case-status");
 const advance = document.querySelector("#advance-case");
 const delay = document.querySelector("#delay-case");
+const decline = document.querySelector("#decline-receipt");
 const delaySummary = document.querySelector("#intake-delay");
 const handoff = document.querySelector("#intake-handoff");
 
@@ -17,7 +18,12 @@ const stages = {
   },
   secured: {
     status: "Dog secured. The field officer is confirming shelter intake.",
-    action: "Complete shelter handoff",
+    action: "Mark ready for intake",
+    next: "awaitingReceipt",
+  },
+  awaitingReceipt: {
+    status: "Awaiting receipt. The field officer retains custody until shelter intake confirms.",
+    action: "Confirm shelter receipt",
     next: "handedOff",
   },
   delayed: {
@@ -40,13 +46,17 @@ function showStage(nextStage) {
   status.textContent = `Status: ${current.status}`;
   advance.textContent = current.action;
   delay.hidden = stage !== "secured";
+  decline.hidden = stage !== "awaitingReceipt";
   delaySummary.hidden = stage !== "delayed";
   handoff.hidden = stage !== "handedOff";
 }
 
 advance.addEventListener("click", () => showStage(stages[stage].next));
-delay.addEventListener("click", () => {
+function deferIntake() {
   showStage("delayed");
   advance.focus();
-});
+}
+
+delay.addEventListener("click", deferIntake);
+decline.addEventListener("click", deferIntake);
 advance.disabled = false;

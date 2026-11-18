@@ -183,8 +183,32 @@ const SHOP=[
  ['','Hacksaw or PVC cutter, tape measure, marker','Skip the saw if the store cuts for you','tool'],
  ['','Drill, 3/32″ bit, #2 Phillips bit, rubber mallet, utility knife','','tool']
 ];
-document.getElementById('shop').innerHTML=SHOP.map(r=>r.length===1?`<div class="sub">${r[0]}</div>`:
-  `<div class="row"><span class="q">${r[0]}</span><span class="n">${r[1]}${r[2]?`<small>${r[2]}</small>`:''}</span><span class="tag">${r[3]}</span></div>`).join('');
+const shoppingList = document.getElementById("shop");
+shoppingList.innerHTML = SHOP.map(([quantity, name, note, category], index) => {
+  if (!name) return `<div class="sub">${quantity}</div>`;
+
+  const quantityId = `shopping-quantity-${index}`;
+  const item = category === "tool"
+    ? name
+    : `<label><input type="checkbox" autocomplete="off" aria-describedby="${quantityId}"> ${name}</label>`;
+  return `<div class="row"><span class="q" id="${quantityId}">${quantity}</span><span class="n">${item}${note ? `<small>${note}</small>` : ""}</span><span class="tag">${category}</span></div>`;
+}).join("");
+
+const shoppingChecks = Array.from(shoppingList.querySelectorAll("input"));
+const shoppingCount = document.getElementById("shopping-count");
+
+function updateShoppingCount() {
+  const checked = shoppingChecks.filter((checkbox) => checkbox.checked).length;
+  shoppingCount.textContent = `${checked} of ${shoppingChecks.length} supply lines checked`;
+}
+
+shoppingList.addEventListener("change", updateShoppingCount);
+document.getElementById("reset-shopping-list").addEventListener("click", () => {
+  for (const checkbox of shoppingChecks) checkbox.checked = false;
+  updateShoppingCount();
+});
+updateShoppingCount();
+document.getElementById("shopping-progress").hidden = false;
 
 const printShoppingList = document.getElementById("print-shopping-list");
 printShoppingList.addEventListener("click", () => window.print());
@@ -208,7 +232,12 @@ function show(){
 }
 $('prev').onclick=()=>{if(i>0){i--;show()}};
 $('next').onclick=()=>{i=i<STEPS.length-1?i+1:0;show()};
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')$('next').click();if(e.key==='ArrowLeft')$('prev').click()});
+document.addEventListener("keydown", (event) => {
+  if (event.target instanceof Element && event.target.closest("#shopping-list")) return;
+
+  if (event.key === "ArrowRight") $("next").click();
+  if (event.key === "ArrowLeft") $("prev").click();
+});
 let sx=null;const stage=$('sStage');
 stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 stage.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50){d<0?$('next').click():$('prev').click()}sx=null});
