@@ -2,7 +2,7 @@
 
 - **Date:** 2026-11-20
 - **Agent:** Cursor Grok 4.7
-- **Branch / PR:** cursor/project-features-evaluation-e8c8
+- **Branch / PR:** cursor/project-features-evaluation-e8c8, pull request 32
 - **Topics:** kitty cot, plan 002, measuring sheet, FR-015, measure.html, cut list
 - **Related:** FR-015, ROADMAP plan 002, open pull requests 23 and 29
 
