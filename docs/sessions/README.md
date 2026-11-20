@@ -32,3 +32,4 @@ Newest first.
 
 | Date | Session | Topics |
 | --- | --- | --- |
+| 2026-11-20 | [Kitty Cot measuring sheet](2026-11-20-kitty-cot-measure-sheet.md) | kitty cot, plan 002, measuring sheet, FR-015, measure.html, cut list |

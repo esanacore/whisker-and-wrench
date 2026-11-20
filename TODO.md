@@ -12,6 +12,7 @@ Keep entries specific, actionable, and current.
 - [ ] Ask a shelter to test the fundraising starter with a sample budget and appeal, then refine the prompts.
 - [ ] Set up hello@whiskerandwrench.com with Cloudflare Email Routing (forwards to Eric's Gmail; adds 3 MX + 1 SPF TXT record, approved 2026-10-26), then swap it into `/shelters/#contact`. Steps in `docs/OPERATIONS.md`.
 - [ ] Turn the Plan 001 guide renderer into a reusable template so new plans are mostly data (see ROADMAP).
+- [ ] Measure one real cat kennel with the Plan 002 sheet and keep the numbers with the shelter. Do not write a Kitty Cot cut list until that sheet exists and a test cot has been built.
 
 ## Technical Debt
 

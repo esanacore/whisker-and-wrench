@@ -19,21 +19,27 @@ format.
 
 ## Latest Handoff
 
-- **Session**: 2026-11-09, shelter workflow and volunteer resources.
-- **Changes**: Added an intake delay and retry, a fundraising starter, a printable Plan 001 shopping list and a facilitator guide.
-- **Verification**: Declared site suite, requirements traceability, secrets sweep and visual inspection of Chromium's print layout.
-- **Release**: Keep the batch in Unreleased pending merge and verification of the main deployment. Prepare the first tagged site release from the integrated changes.
-- **Open follow-ups**: Cloudflare Email Routing, live link preview check, and maintainer approval before deleting `.constitution-bootstrap/`.
+- **Session**: 2026-11-20, Plan 002 Kitty Cot measuring sheet.
+- **Changes**: Added `/plans/002-kitty-cot/`, a six-step measuring sheet with a printable blank log. No pipe lengths, no cut list, no browser storage.
+- **Verification**: `bash scripts/test-site.sh` passed (8 pages, 31 browser tests).
+- **Release**: Left in Unreleased. Do not tag until this page is on main and a person has confirmed the live sheet.
+- **Open follow-ups**: Measure one real cat kennel. Do not write a Kitty Cot guide from guessed lengths. Pull requests 23 and 29 are still separate.
 
 ## Next Steps
 
 **Human action required:** steps 1 and 3.
 
-1. [ ] **HUMAN** — Review and merge the pull request after the required checks pass.
-   - **Why a human:** The maintainer approves publishing the updated preview and shelter resources.
-   - **Done when:** The pull request is merged.
-2. [ ] **AUTOMATED** — Validate and deploy the site from main.
-3. [ ] **HUMAN** — Run both dispatch paths with a field officer and an intake worker, and ask a shelter volunteer to try the fundraising starter and print the shopping list.
-   - **Why a human:** Practitioners can check the handoff against local processes and confirm the resources work in a real planning session.
-   - **Done when:** The team records missing fields and practical feedback using fictional case examples.
-4. [ ] **AGENT** — Verify the main deployment, prepare the first tagged site release, and use practitioner feedback to specify the next software workflow.
+1. [ ] **HUMAN** — Review and merge this pull request.
+   - **Why a human:** merging is the maintainer's decision.
+   - **Done when:** the pull request is merged and the site workflow on main is green.
+2. [ ] **AUTOMATED** — GitHub Actions validates the site and deploys it to Cloudflare Pages. _(blocked by step 1)_
+   - **Done when:** https://whiskerandwrench.com/plans/002-kitty-cot/ shows the measuring sheet.
+3. [ ] **HUMAN** — Measure one real cat kennel with the printed sheet and keep the numbers at the shelter.
+   - **Why a human:** the page cannot see a kennel, and a cut list written before that measurement would be a guess.
+   - **You need:** the published measuring sheet, a tape, and one cat kennel the shelter is willing to fit.
+   - **Procedure:**
+     1. Open `/plans/002-kitty-cot/` and print the sheet.
+     2. Fill every blank at the kennel. Use the same unit on every line.
+     3. Keep the paper at the shelter. Do not post the numbers on a public issue.
+   - **Done when:** the filled sheet exists and no pipe length has been added to the plan.
+4. [ ] **AGENT** — Turn that filled sheet into a Kitty Cot guide only after a test cot has been built and checked against it. _(blocked by step 3)_
