@@ -22,7 +22,7 @@ Each requirement carries a stable ID and explicit acceptance criteria. The mappi
 
 ## Product Summary
 
-The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index and Plan 001. The site includes a fictional dispatch to intake software preview. Operational software is outside this release (see `docs/product/app-vision.md`).
+The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunteers and animal control officers what Whisker & Wrench is and gives them free build plans. Current release goal: a live static site with a home page, a plans index, Plan 001, and a Plan 002 measuring sheet. The site includes a fictional dispatch to intake software preview. Operational software is outside this release (see `docs/product/app-vision.md`).
 
 ## Functional Requirements
 
@@ -90,6 +90,14 @@ The Whisker & Wrench website (whiskerandwrench.com) tells shelter staff, volunte
 **FR-011** `MUST` Volunteers can print the existing Plan 001 shopping list.
 
 - `FR-011-AC-1`: The print button opens browser printing. The print layout retains the plan title, draft notice and shopping list, and omits build controls and unrelated sections.
+
+**FR-015** `MUST` A volunteer can record the kennel measurements a Kitty Cot has to fit, without a cut list.
+
+- `FR-015-AC-1`: `/plans/` links to `/plans/002-kitty-cot/`. The page says it is not a build guide and that it has no cut list.
+- `FR-015-AC-2`: Next walks through every measurement in order. Each one shows its name and a drawing. Back returns to the previous measurement. The last measurement's button reads "Start over" and returns to the first. The first action works from the keyboard.
+- `FR-015-AC-3`: Print keeps the title, the not-a-build notice, and every blank line, and hides the walkthrough controls. The page gives no pipe length. Refresh starts over. The sheet uses no browser storage.
+
+FR-012, FR-013, and FR-014 are unused on this branch so they stay available for other open work. Those numbers are not assigned here.
 
 ## Non-Functional Requirements
 

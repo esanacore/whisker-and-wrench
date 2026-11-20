@@ -7,13 +7,14 @@ This document provides a high-level overview of how this project is wired and or
 Today Whisker & Wrench is a static website plus build plans. There is no
 server, database or user data. The dispatch to intake preview in `site/software/` rehearses one admin workflow
 with a fixed fictional case. Named transitions cover an intake delay, retry and confirmed handoff. The preview keeps progress in memory and makes no case requests.
+Plan 002 (`plans/002-kitty-cot/`) is a measuring sheet, not a guide. It keeps the current measurement in memory and does not store kennel numbers.
 See `docs/product/app-vision.md` for the broader product research.
 
 ## Component Diagram
 
 ```mermaid
 flowchart LR
-    plans["plans/*/guide.html<br/>(source of each guide)"] --> build
+    plans["plans/*/guide.html<br/>and measure.html"] --> build
     site["site/<br/>(home, plans index, CSS)"] --> build
     build["scripts/build-site.sh"] --> dist["dist/"]
     dist --> tests["scripts/test-site.sh<br/>html-validate + link check<br/>Playwright + axe"]
@@ -24,13 +25,14 @@ flowchart LR
 
 ## Data Flow
 
-1. Authors edit `site/` pages, `demo.html`, or a plan's `guide.html`, `guide.css` and `guide.js`.
+1. Authors edit `site/` pages, `demo.html`, a plan's `guide.html`, `guide.css` and `guide.js`, or a measuring sheet's `measure.html`, `measure.css` and `measure.js`.
 2. `scripts/build-site.sh` copies `site/` to `dist/`, `demo.html` to `dist/demo.html`, and each
    `plans/<plan>/guide.html` to `dist/plans/<plan>/index.html` with its `guide.css` and `guide.js` beside it.
+   A plan with `measure.html` and no guide publishes that sheet as `index.html`.
 3. CI tests `dist/`, then uploads it to Cloudflare Pages on pushes to `main`.
 4. Visitors get plain static files. Guides run a small script in the
-   browser (the step-by-step viewer); the only data they store is the current
-   step number in `localStorage`. All CSS and JS is in files, never inline, so
+   browser (the step-by-step viewer); Plan 001 stores the current step number
+   in `localStorage`. The Plan 002 measuring sheet does not. All CSS and JS is in files, never inline, so
    the Content-Security-Policy in `site/_headers` can forbid inline code.
    The one exception is `demo.html`, which must be a single self-contained file
    (constitution rule), so the CSP applies only to the rest of the site. The
@@ -45,9 +47,9 @@ flowchart LR
 ## Repository Structure
 
 - `site/`: hand-written website pages, shared CSS, logo, `_headers` (security headers).
-- `plans/`: build plans. Each plan folder has `guide.html` (visual guide) and `README.md` (plain-text spec). Licensed CC BY-NC 4.0.
+- `plans/`: build plans. A guide folder has `guide.html` and `README.md`. A plan that is not ready to build can have `measure.html` instead. Licensed CC BY-NC 4.0.
 - `scripts/`: build and test scripts, plus `serve-dist.mjs` (local server the browser tests use).
-- `tests/browser/`: Playwright tests: Plan 001 stepper, 375px layout, axe accessibility.
+- `tests/browser/`: Playwright tests: Plan 001 stepper, Plan 002 measuring sheet, 375px layout, axe accessibility.
 - `docs/`: research, product notes and constitution docs.
 - `constitution/`: Eric's Engineering Constitution (submodule).
 - `dist/`: build output. Not committed.

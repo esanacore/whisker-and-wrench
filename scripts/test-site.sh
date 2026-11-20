@@ -81,6 +81,21 @@ else
   echo "FAIL  FR-007: _headers has no /demo rule (Pages serves demo.html at /demo)"; smoke_fail=1
 fi
 must_contain dist/demo.html 'href="https://whiskerandwrench.com/plans/001-shelter-cot/"' FR-007
+must_contain dist/plans/index.html 'href="/plans/002-kitty-cot/"' FR-015
+must_contain dist/plans/002-kitty-cot/index.html "Not a build guide" FR-015
+must_contain dist/plans/002-kitty-cot/index.html "no cut list" FR-015
+if cmp -s plans/002-kitty-cot/measure.html dist/plans/002-kitty-cot/index.html; then
+  echo "PASS  FR-015: /plans/002-kitty-cot/ matches measure.html"
+else
+  echo "FAIL  FR-015: /plans/002-kitty-cot/ differs from measure.html"
+  smoke_fail=1
+fi
+if grep -qE "localStorage|sessionStorage" plans/002-kitty-cot/measure.js; then
+  echo "FAIL  FR-015: the measuring sheet stores data in the browser"
+  smoke_fail=1
+else
+  echo "PASS  FR-015: the measuring sheet does not use browser storage"
+fi
 if grep -qE 'src="https?://|href="https?://[^"]*\.(css|js)"|fonts\.googleapis' dist/demo.html; then
   echo "FAIL  FR-007: demo.html loads something from the network"; smoke_fail=1
 else

@@ -8,6 +8,7 @@ This project follows semantic versioning.
 
 ### Added
 
+- Plan 002 Kitty Cot measuring sheet at `/plans/002-kitty-cot/`. It walks through where to measure a cat kennel and prints a blank log. It is not a build guide and has no pipe lengths.
 - Intake-delay and retry path in the dispatch preview. The sample shows who retains custody until the receiving shelter confirms the handoff.
 - Fundraising starter with a budget prompt, sample donor appeal and link to the cot shopping list.
 - Print layout and print button for the Plan 001 shopping list.
