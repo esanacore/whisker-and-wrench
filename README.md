@@ -11,6 +11,7 @@ Tools, plans and software to help animal shelters and animal control. Website: [
 
 - **Website** (`site/`): home page, build plans index, 404 page. Plain HTML and CSS, no framework, dark mode, works on phones.
 - **Plan 001: PVC Shelter Cot** (`plans/001-shelter-cot/`): an interactive, LEGO-style build guide for a raised dog cot made only from big-box plumbing parts. Served at `/plans/001-shelter-cot/`. Includes a printable shopping list for volunteers. Draft, not yet build-tested.
+- **Plan 003: Modular Cat Tower** (`plans/003-cat-tower/`): a fit sheet for the room a tower has to stand in. Served at `/plans/003-cat-tower/`. Not a build guide. No cut list, shelf size, or weight rating.
 - **Automated checks**: every push builds the site, validates the HTML, checks internal and external links, and runs the engineering constitution's checks.
 - **Auto-deploy**: pushes to `main` deploy to Cloudflare Pages once the checks pass.
 - **Shelter fundraising starter** (`/shelters/#fundraising-starter`): set a target and draft a donor appeal for raised beds.
@@ -63,7 +64,7 @@ python3 -m http.server 8788 --directory dist
 
 </details>
 
-You can also open `plans/001-shelter-cot/guide.html` straight in a browser. Use the arrow keys or swipe to step through.
+You can also open `plans/001-shelter-cot/guide.html` straight in a browser. Use the arrow keys or swipe to step through. `plans/003-cat-tower/measure.html` opens the same way. It is a fit sheet, not a cut list.
 
 ## Test
 
@@ -73,7 +74,7 @@ Same command on every platform (use Git Bash on Windows):
 bash scripts/test-site.sh
 ```
 
-It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, runs the link checker's own tests, then opens the site in headless Chromium (Playwright) to click through the Plan 001 steps and the dispatch to intake walkthrough, check every page fits a 375px phone screen, and run axe accessibility checks. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
+It builds `dist/`, validates every page with html-validate, checks every internal link and anchor, runs the link checker's own tests, then opens the site in headless Chromium (Playwright) to click through the Plan 001 steps, the Plan 003 fit sheet, and the dispatch to intake walkthrough, check every page fits a 375px phone screen, and run axe accessibility checks. CI also checks external links with lychee. See `docs/TEST_PLAN.md`.
 
 ## Deploy
 
@@ -94,6 +95,7 @@ demo.html                     Self-contained demo page (served at /demo.html)
 plans/
   LICENSE                     CC BY-NC 4.0 for all build plans
   001-shelter-cot/            Plan 001: guide.html, guide.css, guide.js + README spec
+  003-cat-tower/              Plan 003: measure.html, measure.css, measure.js (fit sheet, not a guide)
 scripts/
   build-site.sh               Assemble dist/ from site/ and plans/
   test-site.sh                Full test suite

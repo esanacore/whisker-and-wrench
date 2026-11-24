@@ -32,3 +32,4 @@ Newest first.
 
 | Date | Session | Topics |
 | --- | --- | --- |
+| 2026-11-24 | [Cat tower fit sheet](2026-11-24-cat-tower-fit-sheet.md) | Plan 003, Modular Cat Tower, fit sheet, plans/003-cat-tower, FR-016, measure.html |

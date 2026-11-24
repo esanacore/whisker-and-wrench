@@ -18,7 +18,7 @@
 |---|------|-------|--------|
 | 001 | PVC Shelter Cot, medium | Raised dog bed, 1" Sch 40, standard tees/elbows | Draft, needs a test build |
 | 002 | Kitty Cot | Small raised bed that fits a cat kennel | Planned |
-| 003 | Modular Cat Tower | PVC posts, wipeable non-porous shelves, comes apart fast for cleaning | Planned |
+| 003 | Modular Cat Tower | Fit sheet for one room. No pipe lengths, shelf sizes, or weight rating until a room is measured and a test tower is built | Fit sheet |
 | 004 | Play Yard Platform | Low dog bench / lookout for outdoor runs | Planned |
 | 005 | Raised Feeding Stand | Two-bowl stand, hose-down friendly | Planned |
 

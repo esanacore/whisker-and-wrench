@@ -12,6 +12,7 @@ Keep entries specific, actionable, and current.
 - [ ] Ask a shelter to test the fundraising starter with a sample budget and appeal, then refine the prompts.
 - [ ] Set up hello@whiskerandwrench.com with Cloudflare Email Routing (forwards to Eric's Gmail; adds 3 MX + 1 SPF TXT record, approved 2026-10-26), then swap it into `/shelters/#contact`. Steps in `docs/OPERATIONS.md`.
 - [ ] Turn the Plan 001 guide renderer into a reusable template so new plans are mostly data (see ROADMAP).
+- [ ] Keep Plan 003 a fit sheet until someone measures a real room and a test tower is built. Do not add shelf sizes, pipe lengths, or a weight rating before that.
 
 ## Technical Debt
 
