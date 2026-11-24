@@ -65,7 +65,7 @@ constitution/                 Engineering constitution submodule
 .github/workflows/site.yml    Site checks + Cloudflare Pages deploy
 ```
 
-Plan guides live only in `plans/<plan>/` (`guide.html`, `guide.css`, `guide.js`). Never copy them into `site/`; the build does that. Keep CSS and JS in files, never inline: the CSP has no `'unsafe-inline'` and the smoke checks fail on inline script or style. New plans get a row in `site/plans/index.html` and `site/sitemap.xml`.
+Plan guides live only in `plans/<plan>/` (`guide.html`, `guide.css`, `guide.js`). A plan that is not a guide yet can use `measure.html`, `measure.css`, and `measure.js` instead. Never copy them into `site/`; the build does that. Keep CSS and JS in files, never inline: the CSP has no `'unsafe-inline'` and the smoke checks fail on inline script or style. New plans get a row in `site/plans/index.html` and `site/sitemap.xml`. Do not invent pipe lengths, shelf sizes, or a weight rating for a plan that has not been measured and build-tested.
 
 ## Status
 

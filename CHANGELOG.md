@@ -8,6 +8,7 @@ This project follows semantic versioning.
 
 ### Added
 
+- Plan 003 fit sheet at `/plans/003-cat-tower/`. A volunteer can record the floor, the overhead clearance, the path in, how the room is cleaned, and which cats will use a modular cat tower. It is not a build guide, and it has no cut list, shelf size, or weight rating.
 - Intake-delay and retry path in the dispatch preview. The sample shows who retains custody until the receiving shelter confirms the handoff.
 - Fundraising starter with a budget prompt, sample donor appeal and link to the cot shopping list.
 - Print layout and print button for the Plan 001 shopping list.

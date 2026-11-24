@@ -1,0 +1,130 @@
+/* Plan 003 fit sheet. Shared look comes from /assets/site.css. */
+
+button.btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-family: var(--f-cute);
+  font-weight: 600;
+}
+
+button.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+  box-shadow: 0 4px 0 var(--red-deep);
+}
+
+/* The shared hover nudge moves the button by a pixel. On a short window
+   that shift never settles, so a click on Next can miss. Keep the shadow. */
+button.btn:hover {
+  transform: none;
+}
+
+button.btn:focus-visible,
+.dot:focus-visible {
+  outline: 3px solid var(--caution);
+  outline-offset: 2px;
+}
+
+#steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#steps li {
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 0 rgba(34, 48, 63, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* More specific than #steps li, which sets display:flex. */
+#steps li.is-quiet { display: none; }
+
+.diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 70%, var(--bg));
+  border-radius: 8px;
+}
+
+.diagram text {
+  fill: currentColor;
+  font-family: var(--f-cute);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.blank {
+  border-bottom: 2px solid var(--ink);
+  min-height: 2.4rem;
+  padding-bottom: 6px;
+  font-family: var(--f-cute);
+  font-weight: 600;
+}
+
+.st-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot[aria-current="step"] { background: var(--ink); }
+
+@media print {
+  body, .wrap {
+    background: #fff;
+    color: #000;
+  }
+
+  .top,
+  .foot-bar,
+  .st-nav,
+  .diagram,
+  #print-sheet,
+  #step-status,
+  .skip,
+  noscript {
+    display: none !important;
+  }
+
+  #steps li,
+  #steps li.is-quiet {
+    display: flex !important;
+    box-shadow: none;
+    break-inside: avoid;
+    border: 1px solid #000;
+  }
+
+  .blank { border-bottom-color: #000; }
+}

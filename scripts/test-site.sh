@@ -6,7 +6,7 @@
 # 3. Check every internal link and #anchor resolves.
 # 4. Requirement smoke checks.
 # 5. Prove the link checker catches a broken link (negative test).
-# 6. Browser tests (Playwright): Plan 001 stepper, 375px layout, axe a11y.
+# 6. Browser tests (Playwright): Plan 001 stepper, Plan 003 fit sheet, 375px layout, axe a11y.
 #
 # Usage: bash scripts/test-site.sh
 # One-time setup: `npm ci` and `npx playwright install chromium`.
@@ -81,6 +81,23 @@ else
   echo "FAIL  FR-007: _headers has no /demo rule (Pages serves demo.html at /demo)"; smoke_fail=1
 fi
 must_contain dist/demo.html 'href="https://whiskerandwrench.com/plans/001-shelter-cot/"' FR-007
+must_contain dist/plans/index.html 'href="/plans/003-cat-tower/"' FR-016
+must_contain dist/plans/003-cat-tower/index.html "Not a build guide" FR-016
+must_contain dist/plans/003-cat-tower/index.html "no cut list" FR-016
+must_contain dist/plans/003-cat-tower/index.html "no shelf size" FR-016
+must_contain dist/plans/003-cat-tower/index.html "no weight rating" FR-016
+if cmp -s plans/003-cat-tower/measure.html dist/plans/003-cat-tower/index.html; then
+  echo "PASS  FR-016: /plans/003-cat-tower/ matches measure.html"
+else
+  echo "FAIL  FR-016: /plans/003-cat-tower/ differs from measure.html"
+  smoke_fail=1
+fi
+if grep -qE "localStorage|sessionStorage" plans/003-cat-tower/measure.js; then
+  echo "FAIL  FR-016: the fit sheet stores data in the browser"
+  smoke_fail=1
+else
+  echo "PASS  FR-016: the fit sheet does not use browser storage"
+fi
 if grep -qE 'src="https?://|href="https?://[^"]*\.(css|js)"|fonts\.googleapis' dist/demo.html; then
   echo "FAIL  FR-007: demo.html loads something from the network"; smoke_fail=1
 else
